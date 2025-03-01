@@ -1,0 +1,27 @@
+.. docs/source/installation.rst
+
+Installation
+============
+
+To install TimeKAN, use pip from the PyPI repository once it’s published:
+
+.. code-block:: bash
+
+   pip install timekan
+
+For development or testing from source, clone the repository and install locally:
+
+.. code-block:: bash
+
+   git clone https://github.com/yourusername/timekan.git
+   cd timekan
+   pip install -e .
+
+Requirements
+------------
+
+- Python >= 3.7
+- PyTorch >= 1.9
+- Additional dependencies listed in `setup.py`
+
+Ensure your environment meets these requirements before installation.

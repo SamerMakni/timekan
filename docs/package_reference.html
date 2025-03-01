@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Package Reference &#8212; timeKAN</title>
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=649a27d8" />
+    <link rel="stylesheet" type="text/css" href="_static/insipid.css?v=b2d00be7" />
+
+    <script src="_static/documentation_options.js?v=38b66d78"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script defer src="_static/insipid.js"></script>
+    <script defer src="_static/insipid-sidebar.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Examples" href="examples.html" />
+    <link rel="prev" title="Installation" href="installation.html" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+  </head><body>
+    <script type="text/javascript">
+        document.body.classList.add('js');
+    </script>
+    <input type="checkbox" id="sidebar-checkbox" style="display: none;">
+    <label id="overlay" for="sidebar-checkbox"></label>
+    <div class="sidebar-resize-handle"></div>
+    <script type="text/javascript">
+        try {
+            let sidebar = localStorage.getItem('sphinx-sidebar');
+            const sidebar_width = localStorage.getItem('sphinx-sidebar-width');
+            if (sidebar_width) {
+                document.documentElement.style.setProperty('--sidebar-width', sidebar_width);
+            }
+            // show sidebar on wide screen
+            if (!sidebar && window.matchMedia('(min-width: 100rem)').matches) {
+                sidebar = 'visible';
+                // NB: We don't store the value in localStorage!
+            }
+            if (sidebar === 'visible') {
+                document.getElementById('sidebar-checkbox').checked = true;
+            }
+        } catch(e) {
+            console.info(e);
+        }
+    </script>
+    <header id="topbar-placeholder">
+      <div id="topbar">
+        <div id="titlebar">
+          <div class="buttons">
+            <label for="sidebar-checkbox" id="sidebar-button" role="button" tabindex="0" aria-controls="sphinxsidebar" accesskey="M">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg>
+            </label>
+            <button id="search-button" type="button" title="Search" aria-label="Search" aria-expanded="false" aria-controls="search-form" accesskey="S">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+            </button>
+          </div>
+          <div class="title">
+            <a class="parent" href="index.html" accesskey="U">timeKAN</a>
+            <a class="top" href="#">Package Reference</a>
+          </div>
+          <div class="buttons">
+            <button id="fullscreen-button" type="button" aria-hidden="true">
+              <span class="enable">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M212.686 315.314L120 408l32.922 31.029c15.12 15.12 4.412 40.971-16.97 40.971h-112C10.697 480 0 469.255 0 456V344c0-21.382 25.803-32.09 40.922-16.971L72 360l92.686-92.686c6.248-6.248 16.379-6.248 22.627 0l25.373 25.373c6.249 6.248 6.249 16.378 0 22.627zm22.628-118.628L328 104l-32.922-31.029C279.958 57.851 290.666 32 312.048 32h112C437.303 32 448 42.745 448 56v112c0 21.382-25.803 32.09-40.922 16.971L376 152l-92.686 92.686c-6.248 6.248-16.379 6.248-22.627 0l-25.373-25.373c-6.249-6.248-6.249-16.378 0-22.627z"/></svg>
+              </span>
+              <span class="disable">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M4.686 427.314L104 328l-32.922-31.029C55.958 281.851 66.666 256 88.048 256h112C213.303 256 224 266.745 224 280v112c0 21.382-25.803 32.09-40.922 16.971L152 376l-99.314 99.314c-6.248 6.248-16.379 6.248-22.627 0L4.686 449.941c-6.248-6.248-6.248-16.379 0-22.627zM443.314 84.686L344 184l32.922 31.029c15.12 15.12 4.412 40.971-16.97 40.971h-112C234.697 256 224 245.255 224 232V120c0-21.382 25.803-32.09 40.922-16.971L296 136l99.314-99.314c6.248-6.248 16.379-6.248 22.627 0l25.373 25.373c6.248 6.248 6.248 16.379 0 22.627z"/></svg>
+              </span>
+            </button>
+          </div>
+        </div>
+        <div id="searchbox" role="search">
+          <form id="search-form" class="search" style="display: none" action="search.html" method="get">
+            <input type="search" name="q" placeholder="Search ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+            <button>Go</button>
+          </form>
+        </div>
+      </div>
+    </header>
+    <nav>
+      <a href="installation.html" class="nav-icon previous" title="previous:&#13;Installation" aria-label="Previous topic" accesskey="P" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"/></svg>
+      </a>
+      <a href="examples.html" class="nav-icon next" title="next:&#13;Examples" aria-label="Next topic" accesskey="N" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg>
+      </a>
+    </nav>
+
+    <nav class="relbar">
+      <a class="previous" href="installation.html" aria-label="Previous topic" >
+        <div class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"/></svg>
+        </div>
+        <div class="title">
+          <span class="text">
+            <span class="direction">previous</span>
+            Installation
+          </span>
+        </div>
+      </a>
+      <a class="next" href="examples.html" aria-label="Next topic" >
+        <div class="title">
+          <span class="text">
+            <span class="direction">next</span>
+            Examples
+          </span>
+        </div>
+        <div class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
+        </div>
+      </a>
+    </nav>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+<section id="package-reference">
+<h1>Package Reference<a class="headerlink" href="#package-reference" title="Link to this heading">§</a></h1>
+<p>This section documents the main components of TimeKAN.</p>
+<section id="module-timekan.models">
+<span id="models"></span><h2>Models<a class="headerlink" href="#module-timekan.models" title="Link to this heading">§</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="timekan.models.tKANGRU">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">timekan.models.</span></span><span class="sig-name descname"><span class="pre">tKANGRU</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_kan_configs=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_kan_output_dim=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_kan_input_dim=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activation=&lt;built-in</span> <span class="pre">method</span> <span class="pre">tanh</span> <span class="pre">of</span> <span class="pre">type</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recurrent_activation=&lt;built-in</span> <span class="pre">method</span> <span class="pre">sigmoid</span> <span class="pre">of</span> <span class="pre">type</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout=0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recurrent_dropout=0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_sequences=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bidirectional=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer_norm=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kan_type='fourier'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/models/tkan_gru.html#tKANGRU"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.models.tKANGRU" title="Link to this definition">§</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>A KAN-enhanced GRU model for time series processing.</p>
+<p>This class wraps TKANGRUCell to process full sequences, with options for bidirectional processing
+and sequence output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_dim</strong> (<em>int</em>) – Size of the input dimension.</p></li>
+<li><p><strong>hidden_dim</strong> (<em>int</em>) – Size of the hidden state dimension.</p></li>
+<li><p><strong>sub_kan_configs</strong> (<em>dict</em><em>, </em><em>optional</em>) – Configuration for KAN sub-layers. Defaults to None.</p></li>
+<li><p><strong>sub_kan_output_dim</strong> (<em>int</em><em>, </em><em>optional</em>) – Output dimension of KAN sub-layers. Defaults to None.</p></li>
+<li><p><strong>sub_kan_input_dim</strong> (<em>int</em><em>, </em><em>optional</em>) – Input dimension of KAN sub-layers. Defaults to None.</p></li>
+<li><p><strong>activation</strong> (<em>callable</em><em>, </em><em>optional</em>) – Activation function for candidate state. Defaults to torch.tanh.</p></li>
+<li><p><strong>recurrent_activation</strong> (<em>callable</em><em>, </em><em>optional</em>) – Activation for gates. Defaults to torch.sigmoid.</p></li>
+<li><p><strong>dropout</strong> (<em>float</em><em>, </em><em>optional</em>) – Dropout rate for input. Defaults to 0.0.</p></li>
+<li><p><strong>recurrent_dropout</strong> (<em>float</em><em>, </em><em>optional</em>) – Dropout rate for recurrent connections. Defaults to 0.0.</p></li>
+<li><p><strong>return_sequences</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to return the full sequence. Defaults to False.</p></li>
+<li><p><strong>bidirectional</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to process bidirectionally. Defaults to False.</p></li>
+<li><p><strong>layer_norm</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to apply layer normalization. Defaults to False.</p></li>
+<li><p><strong>kan_type</strong> (<em>str</em><em>, </em><em>optional</em>) – Type of KAN layer (‘spline’, ‘chebychev’, ‘fourier’). Defaults to ‘fourier’.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">tKANGRU</span><span class="p">(</span><span class="n">input_dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bidirectional</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># batch_size=32, seq_len=10, input_dim=1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># Expected: torch.Size([32, 10, 32]) due to bidirectional</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="timekan.models.tKANGRU.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_states</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/models/tkan_gru.html#tKANGRU.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.models.tKANGRU.forward" title="Link to this definition">§</a></dt>
+<dd><p>Processes an input sequence through the KAN-enhanced GRU.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>torch.Tensor</em>) – Input tensor of shape (batch_size, seq_len, input_dim).</p></li>
+<li><p><strong>initial_states</strong> (<em>list</em><em>, </em><em>optional</em>) – Initial states for forward pass. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Output tensor, shape depends on return_sequences and bidirectional settings.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="timekan.models.tKANLSTM">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">timekan.models.</span></span><span class="sig-name descname"><span class="pre">tKANLSTM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_kan_configs=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_kan_output_dim=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_kan_input_dim=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activation=&lt;built-in</span> <span class="pre">method</span> <span class="pre">tanh</span> <span class="pre">of</span> <span class="pre">type</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recurrent_activation=&lt;built-in</span> <span class="pre">method</span> <span class="pre">sigmoid</span> <span class="pre">of</span> <span class="pre">type</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout=0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recurrent_dropout=0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_sequences=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bidirectional=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer_norm=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kan_type='fourier'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/models/tkan_lstm.html#tKANLSTM"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.models.tKANLSTM" title="Link to this definition">§</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>A KAN-enhanced LSTM model for time series processing.</p>
+<p>This class wraps TKANCell to process full sequences, with options for bidirectional processing
+and sequence output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_dim</strong> (<em>int</em>) – Size of the input dimension.</p></li>
+<li><p><strong>hidden_dim</strong> (<em>int</em>) – Size of the hidden state dimension.</p></li>
+<li><p><strong>sub_kan_configs</strong> (<em>dict</em><em>, </em><em>optional</em>) – Configuration for KAN sub-layers. Defaults to None.</p></li>
+<li><p><strong>sub_kan_output_dim</strong> (<em>int</em><em>, </em><em>optional</em>) – Output dimension of KAN sub-layers. Defaults to None.</p></li>
+<li><p><strong>sub_kan_input_dim</strong> (<em>int</em><em>, </em><em>optional</em>) – Input dimension of KAN sub-layers. Defaults to None.</p></li>
+<li><p><strong>activation</strong> (<em>callable</em><em>, </em><em>optional</em>) – Activation for cell state. Defaults to torch.tanh.</p></li>
+<li><p><strong>recurrent_activation</strong> (<em>callable</em><em>, </em><em>optional</em>) – Activation for gates. Defaults to torch.sigmoid.</p></li>
+<li><p><strong>dropout</strong> (<em>float</em><em>, </em><em>optional</em>) – Dropout rate for input. Defaults to 0.0.</p></li>
+<li><p><strong>recurrent_dropout</strong> (<em>float</em><em>, </em><em>optional</em>) – Dropout rate for recurrent connections. Defaults to 0.0.</p></li>
+<li><p><strong>return_sequences</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to return the full sequence. Defaults to False.</p></li>
+<li><p><strong>bidirectional</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to process bidirectionally. Defaults to False.</p></li>
+<li><p><strong>layer_norm</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to apply layer normalization. Defaults to False.</p></li>
+<li><p><strong>kan_type</strong> (<em>str</em><em>, </em><em>optional</em>) – Type of KAN layer (‘spline’, ‘chebychev’, ‘fourier’). Defaults to ‘fourier’.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">tKANLSTM</span><span class="p">(</span><span class="n">input_dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bidirectional</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># batch_size=32, seq_len=10, input_dim=1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># Expected: torch.Size([32, 10, 32]) due to bidirectional</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="timekan.models.tKANLSTM.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_states</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/models/tkan_lstm.html#tKANLSTM.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.models.tKANLSTM.forward" title="Link to this definition">§</a></dt>
+<dd><p>Processes an input sequence through the KAN-enhanced LSTM.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>torch.Tensor</em>) – Input tensor of shape (batch_size, seq_len, input_dim).</p></li>
+<li><p><strong>initial_states</strong> (<em>list</em><em>, </em><em>optional</em>) – Initial states for forward pass. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Output tensor, shape depends on return_sequences and bidirectional settings.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-timekan.layers">
+<span id="layers"></span><h2>Layers<a class="headerlink" href="#module-timekan.layers" title="Link to this heading">§</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="timekan.layers.ChebyKANLayer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">timekan.layers.</span></span><span class="sig-name descname"><span class="pre">ChebyKANLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputdim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outdim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/chebkan.html#ChebyKANLayer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.ChebyKANLayer" title="Link to this definition">§</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>A neural network layer that applies a Chebyshev polynomial transformation to the input.</p>
+<p>This layer approximates functions using a Chebyshev series expansion, where the input
+is first normalized to the range [-1, 1] using the hyperbolic tangent function (<cite>tanh</cite>),
+then transformed using Chebyshev polynomials of the first kind.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="timekan.layers.ChebyKANLayer.inputdim">
+<span class="sig-name descname"><span class="pre">inputdim</span></span><a class="headerlink" href="#timekan.layers.ChebyKANLayer.inputdim" title="Link to this definition">§</a></dt>
+<dd><p>The number of input features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="timekan.layers.ChebyKANLayer.outdim">
+<span class="sig-name descname"><span class="pre">outdim</span></span><a class="headerlink" href="#timekan.layers.ChebyKANLayer.outdim" title="Link to this definition">§</a></dt>
+<dd><p>The number of output features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="timekan.layers.ChebyKANLayer.degree">
+<span class="sig-name descname"><span class="pre">degree</span></span><a class="headerlink" href="#timekan.layers.ChebyKANLayer.degree" title="Link to this definition">§</a></dt>
+<dd><p>The degree of the Chebyshev polynomial expansion.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="timekan.layers.ChebyKANLayer.cheby_coeffs">
+<span class="sig-name descname"><span class="pre">cheby_coeffs</span></span><a class="headerlink" href="#timekan.layers.ChebyKANLayer.cheby_coeffs" title="Link to this definition">§</a></dt>
+<dd><p>Learnable coefficients for the Chebyshev expansion,
+initialized with a normal distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.nn.Parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="timekan.layers.ChebyKANLayer.arange">
+<span class="sig-name descname"><span class="pre">arange</span></span><a class="headerlink" href="#timekan.layers.ChebyKANLayer.arange" title="Link to this definition">§</a></dt>
+<dd><p>A tensor containing values [0, 1, …, degree] used for
+polynomial expansion.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputdim</strong> (<em>int</em>) – The number of input features.</p></li>
+<li><p><strong>outdim</strong> (<em>int</em>) – The number of output features.</p></li>
+<li><p><strong>degree</strong> (<em>int</em><em>, </em><em>optional</em>) – The degree of the Chebyshev expansion. Default is 3.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="timekan.layers.ChebyKANLayer.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/chebkan.html#ChebyKANLayer.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.ChebyKANLayer.forward" title="Link to this definition">§</a></dt>
+<dd><p>Forward pass of the Chebyshev Kernel Attention Network (KAN) layer.</p>
+<p>The input is first normalized to the range [-1, 1] using tanh.
+The layer then computes Chebyshev polynomials using the arccosine and cosine functions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>torch.Tensor</em>) – Input tensor of shape (batch_size, inputdim).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Output tensor of shape (batch_size, outdim), obtained via</dt><dd><p>Chebyshev polynomial interpolation.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="timekan.layers.KANLinear">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">timekan.layers.</span></span><span class="sig-name descname"><span class="pre">KANLinear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">in_features,</span> <span class="pre">out_features,</span> <span class="pre">grid_size=50,</span> <span class="pre">spline_order=5,</span> <span class="pre">scale_noise=0.1,</span> <span class="pre">scale_base=1.0,</span> <span class="pre">scale_spline=1.0,</span> <span class="pre">enable_standalone_scale_spline=True,</span> <span class="pre">base_activation=&lt;class</span> <span class="pre">'torch.nn.modules.activation.SiLU'&gt;,</span> <span class="pre">grid_eps=0.02,</span> <span class="pre">grid_range=[-1,</span> <span class="pre">1]</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/kan.html#KANLinear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.KANLinear" title="Link to this definition">§</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="timekan.layers.KANLinear.b_splines">
+<span class="sig-name descname"><span class="pre">b_splines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/kan.html#KANLinear.b_splines"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.KANLinear.b_splines" title="Link to this definition">§</a></dt>
+<dd><p>Compute the B-spline bases for the given input tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>torch.Tensor</em>) – Input tensor of shape (batch_size, in_features).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>B-spline bases tensor of shape (batch_size, in_features, grid_size + spline_order).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="timekan.layers.KANLinear.curve2coeff">
+<span class="sig-name descname"><span class="pre">curve2coeff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/kan.html#KANLinear.curve2coeff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.KANLinear.curve2coeff" title="Link to this definition">§</a></dt>
+<dd><p>Compute the coefficients of the curve that interpolates the given points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>torch.Tensor</em>) – Input tensor of shape (batch_size, in_features).</p></li>
+<li><p><strong>y</strong> (<em>torch.Tensor</em>) – Output tensor of shape (batch_size, in_features, out_features).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Coefficients tensor of shape (out_features, in_features, grid_size + spline_order).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="timekan.layers.KANLinear.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/kan.html#KANLinear.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.KANLinear.forward" title="Link to this definition">§</a></dt>
+<dd><p>Define the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="timekan.layers.KANLinear.regularization_loss">
+<span class="sig-name descname"><span class="pre">regularization_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">regularize_activation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regularize_entropy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/kan.html#KANLinear.regularization_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.KANLinear.regularization_loss" title="Link to this definition">§</a></dt>
+<dd><p>Compute the regularization loss.</p>
+<p>This is a dumb simulation of the original L1 regularization as stated in the
+paper, since the original one requires computing absolutes and entropy from the
+expanded (batch, in_features, out_features) intermediate tensor, which is hidden
+behind the F.linear function if we want an memory efficient implementation.</p>
+<p>The L1 regularization is now computed as mean absolute value of the spline
+weights. The authors implementation also includes this term in addition to the
+sample-based regularization.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="timekan.layers.KANLinear.reset_parameters">
+<span class="sig-name descname"><span class="pre">reset_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/kan.html#KANLinear.reset_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.KANLinear.reset_parameters" title="Link to this definition">§</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="timekan.layers.KANLinear.scaled_spline_weight">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scaled_spline_weight</span></span><a class="headerlink" href="#timekan.layers.KANLinear.scaled_spline_weight" title="Link to this definition">§</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="timekan.layers.KANLinear.update_grid">
+<span class="sig-name descname"><span class="pre">update_grid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/kan.html#KANLinear.update_grid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.KANLinear.update_grid" title="Link to this definition">§</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="timekan.layers.NaiveFourierKANLayer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">timekan.layers.</span></span><span class="sig-name descname"><span class="pre">NaiveFourierKANLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputdim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outdim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gridsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">addbias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/fourierkan.html#NaiveFourierKANLayer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.NaiveFourierKANLayer" title="Link to this definition">§</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>A neural network layer that approximates functions using a Fourier series expansion.</p>
+<p>This layer transforms input features into a high-dimensional Fourier space using
+sine and cosine functions and learns Fourier coefficients to approximate functions.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="timekan.layers.NaiveFourierKANLayer.inputdim">
+<span class="sig-name descname"><span class="pre">inputdim</span></span><a class="headerlink" href="#timekan.layers.NaiveFourierKANLayer.inputdim" title="Link to this definition">§</a></dt>
+<dd><p>Number of input features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="timekan.layers.NaiveFourierKANLayer.outdim">
+<span class="sig-name descname"><span class="pre">outdim</span></span><a class="headerlink" href="#timekan.layers.NaiveFourierKANLayer.outdim" title="Link to this definition">§</a></dt>
+<dd><p>Number of output features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="timekan.layers.NaiveFourierKANLayer.gridsize">
+<span class="sig-name descname"><span class="pre">gridsize</span></span><a class="headerlink" href="#timekan.layers.NaiveFourierKANLayer.gridsize" title="Link to this definition">§</a></dt>
+<dd><p>Number of Fourier basis functions used in the expansion.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="timekan.layers.NaiveFourierKANLayer.addbias">
+<span class="sig-name descname"><span class="pre">addbias</span></span><a class="headerlink" href="#timekan.layers.NaiveFourierKANLayer.addbias" title="Link to this definition">§</a></dt>
+<dd><p>Whether to include a learnable bias term.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="timekan.layers.NaiveFourierKANLayer.fouriercoeffs">
+<span class="sig-name descname"><span class="pre">fouriercoeffs</span></span><a class="headerlink" href="#timekan.layers.NaiveFourierKANLayer.fouriercoeffs" title="Link to this definition">§</a></dt>
+<dd><p>Learnable Fourier coefficients, initialized
+using a normal distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.nn.Parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="timekan.layers.NaiveFourierKANLayer.bias">
+<span class="sig-name descname"><span class="pre">bias</span></span><a class="headerlink" href="#timekan.layers.NaiveFourierKANLayer.bias" title="Link to this definition">§</a></dt>
+<dd><p>Learnable bias term, initialized to zeros.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.nn.Parameter, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputdim</strong> (<em>int</em>) – Number of input features.</p></li>
+<li><p><strong>outdim</strong> (<em>int</em>) – Number of output features.</p></li>
+<li><p><strong>gridsize</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of Fourier basis functions. Default is 300.</p></li>
+<li><p><strong>addbias</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to include a bias term. Default is True.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="timekan.layers.NaiveFourierKANLayer.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/fourierkan.html#NaiveFourierKANLayer.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.NaiveFourierKANLayer.forward" title="Link to this definition">§</a></dt>
+<dd><p>Forward pass of the Naive Fourier Kernel Attention Network (KAN) layer.</p>
+<p>The input is expanded using a Fourier series approximation by computing sine and
+cosine transformations, then applying learned Fourier coefficients to approximate
+functions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>torch.Tensor</em>) – Input tensor of shape (…, inputdim), where <cite>…</cite> represents
+arbitrary batch dimensions.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Output tensor of shape (…, outdim), representing the transformed</dt><dd><p>Fourier features.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-timekan.utils">
+<span id="utilities"></span><h2>Utilities<a class="headerlink" href="#module-timekan.utils" title="Link to this heading">§</a></h2>
+</section>
+</section>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+
+          <div class="sidebar-resize-handle"></div>
+
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Package Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-timekan.models">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-timekan.layers">Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-timekan.utils">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+
+<div><hr class="docutils"></div>
+<ul>
+  <li class="toctree-l1"><a class="reference internal" href="genindex.html" accesskey="I">General Index</a></li>
+  <li class="toctree-l1"><a class="reference internal" href="py-modindex.html">Python Module Index</a></li>
+</ul>
+<div id="ethical-ad-placement"></div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <nav class="relbar">
+      <a class="previous" href="installation.html" aria-label="Previous topic" >
+        <div class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"/></svg>
+        </div>
+        <div class="title">
+          <span class="text">
+            <span class="direction">previous</span>
+            Installation
+          </span>
+        </div>
+      </a>
+      <a class="next" href="examples.html" aria-label="Next topic" >
+        <div class="title">
+          <span class="text">
+            <span class="direction">next</span>
+            Examples
+          </span>
+        </div>
+        <div class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
+        </div>
+      </a>
+    </nav>
+
+    <footer role="contentinfo">
+      &#169; Copyright 2025, Samer Makni.
+      Created using <a class="reference external" href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+      <a class="reference external" href="https://insipid-sphinx-theme.readthedocs.io/">Insipid Theme</a>.
+<a class="reference internal" href="_sources/package_reference.rst.txt" rel="nofollow">Show Source</a>.
+    </footer>
+  </body>
+</html>

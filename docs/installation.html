@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Welcome to TimeKAN’s Documentation &#8212; timeKAN</title>
+    <title>Installation &#8212; timeKAN</title>
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=649a27d8" />
     <link rel="stylesheet" type="text/css" href="_static/insipid.css?v=b2d00be7" />
@@ -17,7 +17,8 @@
     <script defer src="_static/insipid-sidebar.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Installation" href="installation.html" />
+    <link rel="next" title="Package Reference" href="package_reference.html" />
+    <link rel="prev" title="Welcome to TimeKAN’s Documentation" href="index.html" />
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
   </head><body>
@@ -58,8 +59,8 @@
             </button>
           </div>
           <div class="title">
-            <span class="parent">timeKAN</span>
-            <a class="top" href="#">Welcome to TimeKAN’s Documentation</a>
+            <a class="parent" href="index.html" accesskey="U">timeKAN</a>
+            <a class="top" href="#">Installation</a>
           </div>
           <div class="buttons">
             <button id="fullscreen-button" type="button" aria-hidden="true">
@@ -81,17 +82,31 @@
       </div>
     </header>
     <nav>
-      <a href="installation.html" class="nav-icon next" title="next:&#13;Installation" aria-label="Next topic" accesskey="N" tabindex="-1">
+      <a href="index.html" class="nav-icon previous" title="previous:&#13;Welcome to TimeKAN’s Documentation" aria-label="Previous topic" accesskey="P" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"/></svg>
+      </a>
+      <a href="package_reference.html" class="nav-icon next" title="next:&#13;Package Reference" aria-label="Next topic" accesskey="N" tabindex="-1">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg>
       </a>
     </nav>
 
     <nav class="relbar">
-      <a class="next" href="installation.html" aria-label="Next topic" >
+      <a class="previous" href="index.html" aria-label="Previous topic" >
+        <div class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"/></svg>
+        </div>
+        <div class="title">
+          <span class="text">
+            <span class="direction">previous</span>
+            Welcome to TimeKAN’s Documentation
+          </span>
+        </div>
+      </a>
+      <a class="next" href="package_reference.html" aria-label="Next topic" >
         <div class="title">
           <span class="text">
             <span class="direction">next</span>
-            Installation
+            Package Reference
           </span>
         </div>
         <div class="icon">
@@ -105,35 +120,26 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-<section id="welcome-to-timekan-s-documentation">
-<h1>Welcome to TimeKAN’s Documentation<a class="headerlink" href="#welcome-to-timekan-s-documentation" title="Link to this heading">§</a></h1>
-<p><strong>TimeKAN</strong> is a Python library designed to enhance time series modeling by integrating Kolmogorov-Arnold Networks (KAN) with recurrent neural network architectures, such as LSTM and GRU. The library leverages KAN’s ability to approximate complex, nonlinear functions to improve prediction accuracy on challenging datasets like chaotic time series.</p>
-<section id="theory">
-<h2>Theory<a class="headerlink" href="#theory" title="Link to this heading">§</a></h2>
-<p>Kolmogorov-Arnold Networks are based on the Kolmogorov-Arnold representation theorem, which states that any multivariate continuous function can be represented as a superposition of univariate functions. In TimeKAN, KAN layers replace traditional linear transformations in recurrent models, allowing them to capture intricate temporal patterns. Supported KAN layer types include spline-based, Chebyshev polynomial-based, and Fourier series-based implementations, each tailored to different data characteristics.</p>
-<p>The library aims to provide a flexible framework for researchers and practitioners working on time series tasks, with utilities for preprocessing, training, and visualization.</p>
-</section>
-<section id="contents">
-<h2>Contents<a class="headerlink" href="#contents" title="Link to this heading">§</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#requirements">Requirements</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="package_reference.html">Package Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="package_reference.html#module-timekan.models">Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="package_reference.html#module-timekan.layers">Layers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="package_reference.html#module-timekan.utils">Utilities</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="examples.html#simple-kan-gru-example">Simple KAN-GRU Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples.html#more-examples">More Examples</a></li>
-</ul>
-</li>
-</ul>
+<section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Link to this heading">§</a></h1>
+<p>To install TimeKAN, use pip from the PyPI repository once it’s published:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>timekan
+</pre></div>
 </div>
+<p>For development or testing from source, clone the repository and install locally:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/yourusername/timekan.git
+<span class="nb">cd</span><span class="w"> </span>timekan
+pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">§</a></h2>
+<ul class="simple">
+<li><p>Python &gt;= 3.7</p></li>
+<li><p>PyTorch &gt;= 1.9</p></li>
+<li><p>Additional dependencies listed in <cite>setup.py</cite></p></li>
+</ul>
+<p>Ensure your environment meets these requirements before installation.</p>
 </section>
 </section>
 
@@ -146,9 +152,12 @@
 
           <div class="sidebar-resize-handle"></div>
 
-<h3><a href="#">Table of Contents</a></h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="package_reference.html">Package Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 </ul>
@@ -165,11 +174,22 @@
     </div>
 
     <nav class="relbar">
-      <a class="next" href="installation.html" aria-label="Next topic" >
+      <a class="previous" href="index.html" aria-label="Previous topic" >
+        <div class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"/></svg>
+        </div>
+        <div class="title">
+          <span class="text">
+            <span class="direction">previous</span>
+            Welcome to TimeKAN’s Documentation
+          </span>
+        </div>
+      </a>
+      <a class="next" href="package_reference.html" aria-label="Next topic" >
         <div class="title">
           <span class="text">
             <span class="direction">next</span>
-            Installation
+            Package Reference
           </span>
         </div>
         <div class="icon">
@@ -182,7 +202,7 @@
       &#169; Copyright 2025, Samer Makni.
       Created using <a class="reference external" href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
       <a class="reference external" href="https://insipid-sphinx-theme.readthedocs.io/">Insipid Theme</a>.
-<a class="reference internal" href="_sources/index.rst.txt" rel="nofollow">Show Source</a>.
+<a class="reference internal" href="_sources/installation.rst.txt" rel="nofollow">Show Source</a>.
     </footer>
   </body>
 </html>

@@ -1,0 +1,31 @@
+.. docs/source/package_reference.rst
+
+Package Reference
+=================
+
+This section documents the main components of TimeKAN.
+
+Models
+------
+
+.. automodule:: timekan.models
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Layers
+------
+
+.. automodule:: timekan.layers
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Utilities
+---------
+
+.. automodule:: timekan.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:

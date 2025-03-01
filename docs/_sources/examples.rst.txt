@@ -1,0 +1,73 @@
+.. docs/source/examples.rst
+
+Examples
+========
+
+Below are examples demonstrating TimeKAN’s usage.
+
+Simple KAN-GRU Example
+----------------------
+
+This script shows how to use `TKANGRU` for time series prediction:
+
+.. code-block:: python
+
+   import torch
+   import torch.nn as nn
+   from timekan.models.tkan_lstm import tKANLSTM
+   from timekan.utils.datasets import mackey_glass
+
+   from cuda_selector import auto_cuda
+
+
+   device = auto_cuda()
+
+   class TKANLSTMRegressor(nn.Module):
+      """A regressor using tKANLSTM for time series prediction.
+
+      Args:
+         input_dim (int): Size of the input dimension.
+         hidden_dim (int): Size of the hidden state dimension.
+      """
+      def __init__(self, input_dim, hidden_dim):
+         super().__init__()
+         self.tkan = tKANLSTM(
+               input_dim=input_dim,
+               hidden_dim=hidden_dim,
+               return_sequences=False,
+               bidirectional=True,
+               kan_type='fourier',
+               sub_kan_configs={'gridsize': 50, 'addbias': True}
+         )
+         self.regressor = nn.Linear(hidden_dim * 2, 1)
+
+      def forward(self, x):
+         features = self.tkan(x)
+         return self.regressor(features).squeeze(-1)
+
+   x_train, y_train, x_test, y_test = mackey_glass()
+
+   model = TKANLSTMRegressor(input_dim=1, hidden_dim=16).to(device)
+   criterion = nn.MSELoss()
+   optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+
+   for epoch in range(10):
+      model.train()
+      optimizer.zero_grad()
+      x_train, y_train = x_train.to(device), y_train.to(device)
+      outputs = model(x_train)
+      loss = criterion(outputs, y_train)
+      loss.backward()
+      optimizer.step()
+      print(f"Epoch {epoch + 1}/10, Training MSE: {loss.item():.4f}")
+
+   model.eval()
+   with torch.no_grad():
+      x_test, y_test = x_test.to(device), y_test.to(device)
+      test_outputs = model(x_test)
+      test_mse = criterion(test_outputs, y_test).item()
+      print(f"Test MSE: {test_mse:.4f}")
+More Examples
+-------------
+
+Check the `examples/` directory in the repository for detailed tutorials:

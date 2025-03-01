@@ -1,0 +1,23 @@
+.. docs/source/index.rst
+
+Welcome to TimeKAN's Documentation
+==================================
+
+**TimeKAN** is a Python library designed to enhance time series modeling by integrating Kolmogorov-Arnold Networks (KAN) with recurrent neural network architectures, such as LSTM and GRU. The library leverages KAN's ability to approximate complex, nonlinear functions to improve prediction accuracy on challenging datasets like chaotic time series.
+
+Theory
+------
+
+Kolmogorov-Arnold Networks are based on the Kolmogorov-Arnold representation theorem, which states that any multivariate continuous function can be represented as a superposition of univariate functions. In TimeKAN, KAN layers replace traditional linear transformations in recurrent models, allowing them to capture intricate temporal patterns. Supported KAN layer types include spline-based, Chebyshev polynomial-based, and Fourier series-based implementations, each tailored to different data characteristics.
+
+The library aims to provide a flexible framework for researchers and practitioners working on time series tasks, with utilities for preprocessing, training, and visualization.
+
+Contents
+--------
+
+.. toctree::
+   :maxdepth: 2
+
+   installation
+   package_reference
+   examples

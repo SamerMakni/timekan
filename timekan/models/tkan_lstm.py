@@ -7,6 +7,33 @@ from ..layers import KANLinear, ChebyKANLayer, NaiveFourierKANLayer
 
 
 class TKANCell(nn.Module):
+    """A LSTM cell enhanced with Kolmogorov-Arnold Network (KAN) layers.
+
+    This class implements a single time step computation for an LSTM cell where
+    KAN layers enhance the output gate computation.
+
+    Args:
+        input_dim (int): Size of the input dimension.
+        hidden_dim (int): Size of the hidden state dimension.
+        kan_type (str, optional): Type of KAN layer ('spline', 'chebychev', 'fourier'). Defaults to 'fourier'.
+        sub_kan_configs (dict, optional): Configuration for KAN sub-layers. Defaults to None.
+        sub_kan_output_dim (int, optional): Output dimension of KAN sub-layers. Defaults to None.
+        sub_kan_input_dim (int, optional): Input dimension of KAN sub-layers. Defaults to None.
+        activation (callable, optional): Activation for cell state. Defaults to torch.tanh.
+        recurrent_activation (callable, optional): Activation for gates. Defaults to torch.sigmoid.
+        use_bias (bool, optional): Whether to use bias in gates. Defaults to True.
+        dropout (float, optional): Dropout rate for input. Defaults to 0.0.
+        recurrent_dropout (float, optional): Dropout rate for recurrent connections. Defaults to 0.0.
+        layer_norm (bool, optional): Whether to apply layer normalization. Defaults to False.
+        num_sub_layers (int, optional): Number of KAN sub-layers. Defaults to 1.
+
+    Example:
+        >>> import torch
+        >>> cell = TKANCell(input_dim=1, hidden_dim=16, kan_type='fourier')
+        >>> x = torch.randn(32, 1)  # batch_size=32, input_dim=1
+        >>> h, states = cell(x)
+        >>> print(h.shape)  # Expected: torch.Size([32, 16])
+    """
     def __init__(
         self,
         input_dim,
@@ -74,6 +101,10 @@ class TKANCell(nn.Module):
         self.reset_parameters()
 
     def reset_parameters(self):
+        """Initializes the parameters of the TKANCell.
+
+        Uses Kaiming uniform initialization for weights and zeros for biases.
+        """
         nn.init.kaiming_uniform_(self.kernel, nonlinearity='relu')
         nn.init.orthogonal_(self.recurrent_kernel)
         
@@ -87,6 +118,16 @@ class TKANCell(nn.Module):
         nn.init.zeros_(self.aggregated_bias)
 
     def forward(self, x, states=None):
+        """Computes one time step of the KAN-enhanced LSTM cell.
+
+        Args:
+            x (torch.Tensor): Input tensor of shape (batch_size, input_dim).
+            states (list, optional): List of previous hidden state, cell state, and sub-states. Defaults to None.
+
+        Returns:
+            tuple: (hidden state, updated states), where hidden state is of shape (batch_size, hidden_dim)
+                   and states is a list of tensors for the next step.
+        """
         if states is None:
             h = torch.zeros(x.size(0), self.hidden_dim, device=x.device)
             c = torch.zeros(x.size(0), self.hidden_dim, device=x.device)
@@ -102,7 +143,6 @@ class TKANCell(nn.Module):
             if self.recurrent_dropout > 0:
                 h_tm1 = F.dropout(h_tm1, p=self.recurrent_dropout, training=self.training)
         
-        # Compute gates
         gates = torch.matmul(x, self.kernel) + torch.matmul(h_tm1, self.recurrent_kernel)
         if self.bias is not None:
             gates += self.bias
@@ -128,7 +168,6 @@ class TKANCell(nn.Module):
             sub_outputs.append(sub_output)
             new_sub_states.append(new_sub_state)
         
-        # Aggregate sub-layer outputs
         aggregated_sub_output = torch.cat(sub_outputs, dim=-1)
         aggregated_input = torch.matmul(aggregated_sub_output, self.aggregated_weight) + self.aggregated_bias
         
@@ -142,6 +181,33 @@ class TKANCell(nn.Module):
 
 
 class tKANLSTM(nn.Module):
+    """A KAN-enhanced LSTM model for time series processing.
+
+    This class wraps TKANCell to process full sequences, with options for bidirectional processing
+    and sequence output.
+
+    Args:
+        input_dim (int): Size of the input dimension.
+        hidden_dim (int): Size of the hidden state dimension.
+        sub_kan_configs (dict, optional): Configuration for KAN sub-layers. Defaults to None.
+        sub_kan_output_dim (int, optional): Output dimension of KAN sub-layers. Defaults to None.
+        sub_kan_input_dim (int, optional): Input dimension of KAN sub-layers. Defaults to None.
+        activation (callable, optional): Activation for cell state. Defaults to torch.tanh.
+        recurrent_activation (callable, optional): Activation for gates. Defaults to torch.sigmoid.
+        dropout (float, optional): Dropout rate for input. Defaults to 0.0.
+        recurrent_dropout (float, optional): Dropout rate for recurrent connections. Defaults to 0.0.
+        return_sequences (bool, optional): Whether to return the full sequence. Defaults to False.
+        bidirectional (bool, optional): Whether to process bidirectionally. Defaults to False.
+        layer_norm (bool, optional): Whether to apply layer normalization. Defaults to False.
+        kan_type (str, optional): Type of KAN layer ('spline', 'chebychev', 'fourier'). Defaults to 'fourier'.
+
+    Example:
+        >>> import torch
+        >>> model = tKANLSTM(input_dim=1, hidden_dim=16, return_sequences=True, bidirectional=True)
+        >>> x = torch.randn(32, 10, 1)  # batch_size=32, seq_len=10, input_dim=1
+        >>> output = model(x)
+        >>> print(output.shape)  # Expected: torch.Size([32, 10, 32]) due to bidirectional
+    """
     def __init__(
         self,
         input_dim,
@@ -193,6 +259,15 @@ class tKANLSTM(nn.Module):
             )
     
     def forward(self, x, initial_states=None):
+        """Processes an input sequence through the KAN-enhanced LSTM.
+
+        Args:
+            x (torch.Tensor): Input tensor of shape (batch_size, seq_len, input_dim).
+            initial_states (list, optional): Initial states for forward pass. Defaults to None.
+
+        Returns:
+            torch.Tensor: Output tensor, shape depends on return_sequences and bidirectional settings.
+        """
         batch_size, seq_len, input_dim = x.shape
         forward_states = initial_states[:2] if initial_states else None
         forward_outputs = []
