@@ -15,6 +15,9 @@ Inspired by:
 - [FourierKAN](https://github.com/GistNoesis/FourierKAN/)
 - [TKAN](https://arxiv.org/pdf/2405.07344)
 
+Full documentation can be found [here](https://samermakni.github.io/timekan/).
+
+
 ![image](./images/timeKAN.png)
 
 In `tKANLSTM`, KAN layers replace the output gate, computing $o_t = \sigma(\text{KAN}(W_x x_t + W_h h_{t-1}))$. In `tKANGRU`, they form the candidate hidden state, $\tilde{h}_t = \tanh(\text{KAN}(W_x x_t + W_h (r_t \odot h_{t-1})))$. The layer basis functions can be Fourier series, Chebyshev polynomials, or splines.
@@ -57,7 +60,6 @@ Requirements: Python >= 3.9, PyTorch >= 2.4.0
 
 ## Usage
 
-Full documentation can be found [here](https://samermakni.github.io/timekan/).
 
 Here’s a simple example training a TKANLSTM on Mackey-Glass data:
 
