@@ -67,10 +67,10 @@ import torch.nn as nn
 from timekan.models.tkan_lstm import tKANLSTM
 from timekan.utils.datasets import mackey_glass
 
-class TKANLSTM(nn.Module):
+class RecurrentKAN(nn.Module):
     def __init__(self, input_dim, hidden_dim):
         super().__init__()
-        self.tkan = tKANLSTM(
+        self.tkan = RecurrentKAN(
             input_dim=input_dim,
             hidden_dim=hidden_dim,
             return_sequences=False,
@@ -86,7 +86,7 @@ class TKANLSTM(nn.Module):
 
 x_train, y_train, x_test, y_test = mackey_glass()
 
-model = TKANLSTM(input_dim=1, hidden_dim=16)
+model = RecurrentKAN(input_dim=1, hidden_dim=16)
 criterion = nn.MSELoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 
