@@ -1,5 +1,10 @@
+![PyPI - Version](https://img.shields.io/pypi/v/timekan)
+![PyPI - License](https://img.shields.io/pypi/l/timekan)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/timekan)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/timekan)
 
 # TimeKAN
+
 
 TimeKAN is a Pytorch implementation of integrating Kolmogorov-Arnold Networks (KAN) for temporal data with recurrent neural network architectures (Currently LSTM and GRU). It is still in an experimental stage, the implementation suffer from exploding gradients and vanishing gradients problems but with careful training it can perform well specifically on non-linear/complex temporal data.
 
