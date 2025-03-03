@@ -240,11 +240,6 @@
             links.push(link);
         }
     });
-    const small_screen = window.matchMedia('(max-width: 39rem)');
-
-    if (current.length === 1 && current[0].childElementCount === 1 && small_screen.matches) {
-        hide();
-    }
     const bottom_space = 0;
 
     if (current.length) {
@@ -298,11 +293,6 @@
         }
         sections.set(section, link);
         intersection_observer.observe(section);
-        link.addEventListener('click', event => {
-            if (small_screen.matches) {
-                hide();
-            }
-        });
     });
 });
 

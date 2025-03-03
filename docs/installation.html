@@ -8,9 +8,9 @@
     <title>Installation &#8212; timeKAN</title>
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=649a27d8" />
-    <link rel="stylesheet" type="text/css" href="_static/insipid.css?v=b2d00be7" />
+    <link rel="stylesheet" type="text/css" href="_static/insipid.css?v=75f6bc3c" />
 
-    <script src="_static/documentation_options.js?v=38b66d78"></script>
+    <script src="_static/documentation_options.js?v=91f6191e"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script defer src="_static/insipid.js"></script>
@@ -18,7 +18,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Package Reference" href="package_reference.html" />
-    <link rel="prev" title="Welcome to TimeKAN’s Documentation" href="index.html" />
+    <link rel="prev" title="Theory" href="theory.html" />
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
   </head><body>
@@ -36,7 +36,7 @@
                 document.documentElement.style.setProperty('--sidebar-width', sidebar_width);
             }
             // show sidebar on wide screen
-            if (!sidebar && window.matchMedia('(min-width: 100rem)').matches) {
+            if (!sidebar && window.matchMedia('(min-width: 0px)').matches) {
                 sidebar = 'visible';
                 // NB: We don't store the value in localStorage!
             }
@@ -82,7 +82,7 @@
       </div>
     </header>
     <nav>
-      <a href="index.html" class="nav-icon previous" title="previous:&#13;Welcome to TimeKAN’s Documentation" aria-label="Previous topic" accesskey="P" tabindex="-1">
+      <a href="theory.html" class="nav-icon previous" title="previous:&#13;Theory" aria-label="Previous topic" accesskey="P" tabindex="-1">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"/></svg>
       </a>
       <a href="package_reference.html" class="nav-icon next" title="next:&#13;Package Reference" aria-label="Next topic" accesskey="N" tabindex="-1">
@@ -91,14 +91,14 @@
     </nav>
 
     <nav class="relbar">
-      <a class="previous" href="index.html" aria-label="Previous topic" >
+      <a class="previous" href="theory.html" aria-label="Previous topic" >
         <div class="icon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"/></svg>
         </div>
         <div class="title">
           <span class="text">
             <span class="direction">previous</span>
-            Welcome to TimeKAN’s Documentation
+            Theory
           </span>
         </div>
       </a>
@@ -127,7 +127,7 @@
 </pre></div>
 </div>
 <p>For development or testing from source, clone the repository and install locally:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/yourusername/timekan.git
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/SamerMakni/timekan.git
 <span class="nb">cd</span><span class="w"> </span>timekan
 pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
 </pre></div>
@@ -135,8 +135,8 @@ pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </s
 <section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">§</a></h2>
 <ul class="simple">
-<li><p>Python &gt;= 3.7</p></li>
-<li><p>PyTorch &gt;= 1.9</p></li>
+<li><p>Python &gt;= 3.9</p></li>
+<li><p>PyTorch &gt;= 2.4.0</p></li>
 <li><p>Additional dependencies listed in <cite>setup.py</cite></p></li>
 </ul>
 <p>Ensure your environment meets these requirements before installation.</p>
@@ -154,6 +154,7 @@ pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </s
 
 <h3><a href="index.html">Table of Contents</a></h3>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="theory.html">Theory</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
 </ul>
@@ -174,14 +175,14 @@ pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </s
     </div>
 
     <nav class="relbar">
-      <a class="previous" href="index.html" aria-label="Previous topic" >
+      <a class="previous" href="theory.html" aria-label="Previous topic" >
         <div class="icon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"/></svg>
         </div>
         <div class="title">
           <span class="text">
             <span class="direction">previous</span>
-            Welcome to TimeKAN’s Documentation
+            Theory
           </span>
         </div>
       </a>
@@ -201,7 +202,6 @@ pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </s
     <footer role="contentinfo">
       &#169; Copyright 2025, Samer Makni.
       Created using <a class="reference external" href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
-      <a class="reference external" href="https://insipid-sphinx-theme.readthedocs.io/">Insipid Theme</a>.
 <a class="reference internal" href="_sources/installation.rst.txt" rel="nofollow">Show Source</a>.
     </footer>
   </body>

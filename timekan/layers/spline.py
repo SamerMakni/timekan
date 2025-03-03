@@ -3,7 +3,7 @@ import torch.nn.functional as F
 import math
 
 
-class KANLinear(torch.nn.Module):
+class Spline(torch.nn.Module):
     def __init__(
         self,
         in_features,
@@ -18,7 +18,7 @@ class KANLinear(torch.nn.Module):
         grid_eps=0.02,
         grid_range=[-1, 1],
     ):
-        super(KANLinear, self).__init__()
+        super(Spline, self).__init__()
         self.in_features = in_features
         self.out_features = out_features
         self.grid_size = grid_size
@@ -258,7 +258,7 @@ class KAN(torch.nn.Module):
         self.layers = torch.nn.ModuleList()
         for in_features, out_features in zip(layers_hidden, layers_hidden[1:]):
             self.layers.append(
-                KANLinear(
+                Spline(
                     in_features,
                     out_features,
                     grid_size=grid_size,

@@ -1,9 +1,5 @@
-from .chebkan import ChebyKANLayer
-from .fourierkan import NaiveFourierKANLayer
-from .kan import KANLinear
+from .chebyshev import Chebyshev
+from .fourier import Fourier
+from .spline import Spline
 
-__all__ = [
-    'ChebyKANLayer',
-    'NaiveFourierKANLayer',
-    'KANLinear',
-]
+__all__ = ["Chebyshev", "Fourier", "Spline"]

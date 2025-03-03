@@ -8,9 +8,9 @@
     <title>Package Reference &#8212; timeKAN</title>
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=649a27d8" />
-    <link rel="stylesheet" type="text/css" href="_static/insipid.css?v=b2d00be7" />
+    <link rel="stylesheet" type="text/css" href="_static/insipid.css?v=75f6bc3c" />
 
-    <script src="_static/documentation_options.js?v=38b66d78"></script>
+    <script src="_static/documentation_options.js?v=91f6191e"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script defer src="_static/insipid.js"></script>
@@ -36,7 +36,7 @@
                 document.documentElement.style.setProperty('--sidebar-width', sidebar_width);
             }
             // show sidebar on wide screen
-            if (!sidebar && window.matchMedia('(min-width: 100rem)').matches) {
+            if (!sidebar && window.matchMedia('(min-width: 0px)').matches) {
                 sidebar = 'visible';
                 // NB: We don't store the value in localStorage!
             }
@@ -247,73 +247,13 @@ and sequence output.</p>
 <p>A neural network layer that applies a Chebyshev polynomial transformation to the input.</p>
 <p>This layer approximates functions using a Chebyshev series expansion, where the input
 is first normalized to the range [-1, 1] using the hyperbolic tangent function (<cite>tanh</cite>),
-then transformed using Chebyshev polynomials of the first kind.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="timekan.layers.ChebyKANLayer.inputdim">
-<span class="sig-name descname"><span class="pre">inputdim</span></span><a class="headerlink" href="#timekan.layers.ChebyKANLayer.inputdim" title="Link to this definition">§</a></dt>
-<dd><p>The number of input features.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="timekan.layers.ChebyKANLayer.outdim">
-<span class="sig-name descname"><span class="pre">outdim</span></span><a class="headerlink" href="#timekan.layers.ChebyKANLayer.outdim" title="Link to this definition">§</a></dt>
-<dd><p>The number of output features.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="timekan.layers.ChebyKANLayer.degree">
-<span class="sig-name descname"><span class="pre">degree</span></span><a class="headerlink" href="#timekan.layers.ChebyKANLayer.degree" title="Link to this definition">§</a></dt>
-<dd><p>The degree of the Chebyshev polynomial expansion.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="timekan.layers.ChebyKANLayer.cheby_coeffs">
-<span class="sig-name descname"><span class="pre">cheby_coeffs</span></span><a class="headerlink" href="#timekan.layers.ChebyKANLayer.cheby_coeffs" title="Link to this definition">§</a></dt>
-<dd><p>Learnable coefficients for the Chebyshev expansion,
-initialized with a normal distribution.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch.nn.Parameter</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="timekan.layers.ChebyKANLayer.arange">
-<span class="sig-name descname"><span class="pre">arange</span></span><a class="headerlink" href="#timekan.layers.ChebyKANLayer.arange" title="Link to this definition">§</a></dt>
-<dd><p>A tensor containing values [0, 1, …, degree] used for
-polynomial expansion.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch.Tensor</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>inputdim</strong> (<em>int</em>) – The number of input features.</p></li>
-<li><p><strong>outdim</strong> (<em>int</em>) – The number of output features.</p></li>
-<li><p><strong>degree</strong> (<em>int</em><em>, </em><em>optional</em>) – The degree of the Chebyshev expansion. Default is 3.</p></li>
-</ul>
-</dd>
-</dl>
+then transformed using Chebyshev polynomials of the first kind.
+:param inputdim: The number of input features.
+:type inputdim: int
+:param outdim: The number of output features.
+:type outdim: int
+:param degree: The degree of the Chebyshev expansion. Default is 3.
+:type degree: int, optional</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="timekan.layers.ChebyKANLayer.forward">
 <span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/chebkan.html#ChebyKANLayer.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.ChebyKANLayer.forward" title="Link to this definition">§</a></dt>
@@ -430,84 +370,15 @@ sample-based regularization.</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>A neural network layer that approximates functions using a Fourier series expansion.</p>
 <p>This layer transforms input features into a high-dimensional Fourier space using
-sine and cosine functions and learns Fourier coefficients to approximate functions.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="timekan.layers.NaiveFourierKANLayer.inputdim">
-<span class="sig-name descname"><span class="pre">inputdim</span></span><a class="headerlink" href="#timekan.layers.NaiveFourierKANLayer.inputdim" title="Link to this definition">§</a></dt>
-<dd><p>Number of input features.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="timekan.layers.NaiveFourierKANLayer.outdim">
-<span class="sig-name descname"><span class="pre">outdim</span></span><a class="headerlink" href="#timekan.layers.NaiveFourierKANLayer.outdim" title="Link to this definition">§</a></dt>
-<dd><p>Number of output features.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="timekan.layers.NaiveFourierKANLayer.gridsize">
-<span class="sig-name descname"><span class="pre">gridsize</span></span><a class="headerlink" href="#timekan.layers.NaiveFourierKANLayer.gridsize" title="Link to this definition">§</a></dt>
-<dd><p>Number of Fourier basis functions used in the expansion.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="timekan.layers.NaiveFourierKANLayer.addbias">
-<span class="sig-name descname"><span class="pre">addbias</span></span><a class="headerlink" href="#timekan.layers.NaiveFourierKANLayer.addbias" title="Link to this definition">§</a></dt>
-<dd><p>Whether to include a learnable bias term.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="timekan.layers.NaiveFourierKANLayer.fouriercoeffs">
-<span class="sig-name descname"><span class="pre">fouriercoeffs</span></span><a class="headerlink" href="#timekan.layers.NaiveFourierKANLayer.fouriercoeffs" title="Link to this definition">§</a></dt>
-<dd><p>Learnable Fourier coefficients, initialized
-using a normal distribution.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch.nn.Parameter</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="timekan.layers.NaiveFourierKANLayer.bias">
-<span class="sig-name descname"><span class="pre">bias</span></span><a class="headerlink" href="#timekan.layers.NaiveFourierKANLayer.bias" title="Link to this definition">§</a></dt>
-<dd><p>Learnable bias term, initialized to zeros.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch.nn.Parameter, optional</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>inputdim</strong> (<em>int</em>) – Number of input features.</p></li>
-<li><p><strong>outdim</strong> (<em>int</em>) – Number of output features.</p></li>
-<li><p><strong>gridsize</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of Fourier basis functions. Default is 300.</p></li>
-<li><p><strong>addbias</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to include a bias term. Default is True.</p></li>
-</ul>
-</dd>
-</dl>
+sine and cosine functions and learns Fourier coefficients to approximate functions.
+:param inputdim: Number of input features.
+:type inputdim: int
+:param outdim: Number of output features.
+:type outdim: int
+:param gridsize: Number of Fourier basis functions. Default is 300.
+:type gridsize: int, optional
+:param addbias: Whether to include a bias term. Default is True.
+:type addbias: bool, optional</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="timekan.layers.NaiveFourierKANLayer.forward">
 <span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/fourierkan.html#NaiveFourierKANLayer.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.NaiveFourierKANLayer.forward" title="Link to this definition">§</a></dt>
@@ -538,6 +409,115 @@ arbitrary batch dimensions.</p>
 </section>
 <section id="module-timekan.utils">
 <span id="utilities"></span><h2>Utilities<a class="headerlink" href="#module-timekan.utils" title="Link to this heading">§</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="timekan.utils.lorenz">
+<span class="sig-prename descclassname"><span class="pre">timekan.utils.</span></span><span class="sig-name descname"><span class="pre">lorenz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">28.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.6666666666666665</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/utils/datasets.html#lorenz"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.utils.lorenz" title="Link to this definition">§</a></dt>
+<dd><p>Generate training and testing datasets for the Lorenz system (x-coordinate).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>length</strong> (<em>int</em>) – Total number of points in the time series (default: 1200)</p></li>
+<li><p><strong>sigma</strong> (<em>float</em>) – Lorenz parameter sigma (default: 10.0)</p></li>
+<li><p><strong>rho</strong> (<em>float</em>) – Lorenz parameter rho (default: 28.0)</p></li>
+<li><p><strong>beta</strong> (<em>float</em>) – Lorenz parameter beta (default: 8/3)</p></li>
+<li><p><strong>x0</strong> (<em>float</em>) – Initial x-coordinate (default: 1.0)</p></li>
+<li><p><strong>y0</strong> (<em>float</em>) – Initial y-coordinate (default: 0.0)</p></li>
+<li><p><strong>z0</strong> (<em>float</em>) – Initial z-coordinate (default: 0.0)</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step for Euler integration (default: 0.01)</p></li>
+<li><p><strong>window_size</strong> (<em>int</em>) – Number of past points to predict the next point (default: 20)</p></li>
+<li><p><strong>train_size</strong> (<em>int</em>) – Number of points for training (default: 1000)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>(x_train, y_train, x_test, y_test)</dt><dd><ul class="simple">
+<li><p>x_train (torch.Tensor): Training inputs, shape [980, 20, 1]</p></li>
+<li><p>y_train (torch.Tensor): Training targets, shape [980]</p></li>
+<li><p>x_test (torch.Tensor): Testing inputs, shape [180, 20, 1]</p></li>
+<li><p>y_test (torch.Tensor): Testing targets, shape [180]</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="timekan.utils.mackey_glass">
+<span class="sig-prename descclassname"><span class="pre">timekan.utils.</span></span><span class="sig-name descname"><span class="pre">mackey_glass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">17</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/utils/datasets.html#mackey_glass"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.utils.mackey_glass" title="Link to this definition">§</a></dt>
+<dd><p>Generate training and testing datasets for the Mackey-Glass time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>length</strong> (<em>int</em>) – Total number of points in the time series (default: 1200)</p></li>
+<li><p><strong>tau</strong> (<em>int</em>) – Delay parameter (default: 17)</p></li>
+<li><p><strong>a</strong> (<em>float</em>) – Equation parameter ‘a’ (default: 0.2)</p></li>
+<li><p><strong>b</strong> (<em>float</em>) – Equation parameter ‘b’ (default: 0.1)</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – Equation parameter ‘n’ (default: 10)</p></li>
+<li><p><strong>x0</strong> (<em>float</em>) – Initial condition (default: 1.2)</p></li>
+<li><p><strong>window_size</strong> (<em>int</em>) – Number of past points to predict the next point (default: 20)</p></li>
+<li><p><strong>train_size</strong> (<em>int</em>) – Number of points for training (default: 1000)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>(x_train, y_train, x_test, y_test)</dt><dd><ul class="simple">
+<li><p>x_train (torch.Tensor): Training inputs, shape [980, 20, 1]</p></li>
+<li><p>y_train (torch.Tensor): Training targets, shape [980]</p></li>
+<li><p>x_test (torch.Tensor): Testing inputs, shape [180, 20, 1]</p></li>
+<li><p>y_test (torch.Tensor): Testing targets, shape [180]</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="timekan.utils.rossler">
+<span class="sig-prename descclassname"><span class="pre">timekan.utils.</span></span><span class="sig-name descname"><span class="pre">rossler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5.7</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/utils/datasets.html#rossler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.utils.rossler" title="Link to this definition">§</a></dt>
+<dd><p>Generate training and testing datasets for the Rössler system (x-coordinate).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>length</strong> (<em>int</em>) – Total number of points in the time series (default: 1200)</p></li>
+<li><p><strong>a</strong> (<em>float</em>) – Rössler parameter ‘a’ (default: 0.2)</p></li>
+<li><p><strong>b</strong> (<em>float</em>) – Rössler parameter ‘b’ (default: 0.2)</p></li>
+<li><p><strong>c</strong> (<em>float</em>) – Rössler parameter ‘c’ (default: 5.7)</p></li>
+<li><p><strong>x0</strong> (<em>float</em>) – Initial x-coordinate (default: 0.1)</p></li>
+<li><p><strong>y0</strong> (<em>float</em>) – Initial y-coordinate (default: 0.1)</p></li>
+<li><p><strong>z0</strong> (<em>float</em>) – Initial z-coordinate (default: 0.1)</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step for Euler integration (default: 0.01)</p></li>
+<li><p><strong>window_size</strong> (<em>int</em>) – Number of past points to predict the next point (default: 20)</p></li>
+<li><p><strong>train_size</strong> (<em>int</em>) – Number of points for training (default: 1000)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>(x_train, y_train, x_test, y_test)</dt><dd><ul class="simple">
+<li><p>x_train (torch.Tensor): Training inputs, shape [980, 20, 1]</p></li>
+<li><p>y_train (torch.Tensor): Training targets, shape [980]</p></li>
+<li><p>x_test (torch.Tensor): Testing inputs, shape [180, 20, 1]</p></li>
+<li><p>y_test (torch.Tensor): Testing targets, shape [180]</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 </section>
 
@@ -601,7 +581,6 @@ arbitrary batch dimensions.</p>
     <footer role="contentinfo">
       &#169; Copyright 2025, Samer Makni.
       Created using <a class="reference external" href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
-      <a class="reference external" href="https://insipid-sphinx-theme.readthedocs.io/">Insipid Theme</a>.
 <a class="reference internal" href="_sources/package_reference.rst.txt" rel="nofollow">Show Source</a>.
     </footer>
   </body>

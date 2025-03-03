@@ -1,23 +1,50 @@
 .. docs/source/index.rst
 
-Welcome to TimeKAN's Documentation
-==================================
+Introduction
+=============
+**TimeKAN** is a Python library that implements Kolmogorov-Arnold Networks (KAN) with recurrent neural network architectures in Pytorch. Currently, it still in experimental stage but with careful training it can perform quite well on some time series tasks.
 
-**TimeKAN** is a Python library designed to enhance time series modeling by integrating Kolmogorov-Arnold Networks (KAN) with recurrent neural network architectures, such as LSTM and GRU. The library leverages KAN's ability to approximate complex, nonlinear functions to improve prediction accuracy on challenging datasets like chaotic time series.
+.. image:: ./images/timeKAN.png
+   :width: 500
+   :align: center
 
-Theory
-------
 
-Kolmogorov-Arnold Networks are based on the Kolmogorov-Arnold representation theorem, which states that any multivariate continuous function can be represented as a superposition of univariate functions. In TimeKAN, KAN layers replace traditional linear transformations in recurrent models, allowing them to capture intricate temporal patterns. Supported KAN layer types include spline-based, Chebyshev polynomial-based, and Fourier series-based implementations, each tailored to different data characteristics.
+In `tKANLSTM`, KAN layers replace the output gate, computing :math:`o_t = \sigma(\text{KAN}(W_x x_t + W_h h_{t-1}))`. In `tKANGRU`, they form the candidate hidden state, :math:`\tilde{h}_t = \tanh(\text{KAN}(W_x x_t + W_h (r_t \odot h_{t-1})))`. The layer basis functions can be Fourier series, Chebyshev polynomials, or splines.
 
-The library aims to provide a flexible framework for researchers and practitioners working on time series tasks, with utilities for preprocessing, training, and visualization.
+
+
+Here's how it can perform on Rossler system signal:
+
+.. image:: ./images/rossler_system.png
+   :width: 800
+   :align: center
+
+
+The table below compares TimeKAN (using `tKANLSTM` and `spline` as basic functions) and a standard bidirectional LSTM on three chaotic datasets available in `timekan.utils.datasets`. Metrics include Mean Absolute Error (MAE) and training time (seconds) until convergence.
+
++----------------+------------+--------+---------------------+
+| Dataset        | Model      | MAE    | Training Time (s)   |
++================+============+========+=====================+
+| Mackey-Glass   | LSTM       | 0.0893 | 0.3346              |
++                +------------+--------+---------------------+
+|                | TimeKAN    | 0.0822 | 9.8755              |
++----------------+------------+--------+---------------------+
+| Lorenz         | LSTM       | 0.9410 | 1.1331              |
++                +------------+--------+---------------------+
+|                | TimeKAN    | 0.7485 | 7.9437              |
++----------------+------------+--------+---------------------+
+| Rössler        | LSTM       | 0.3332 | 1.3951              |
++                +------------+--------+---------------------+
+|                | TimeKAN    | 0.2657 | 12.4172             |
++----------------+------------+--------+---------------------+
 
 Contents
 --------
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3 
 
+   theory
    installation
    package_reference
    examples

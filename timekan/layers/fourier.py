@@ -3,22 +3,12 @@ import torch.nn as nn
 
 import numpy as np
 
-class NaiveFourierKANLayer(nn.Module):
+class Fourier(nn.Module):
     """
     A neural network layer that approximates functions using a Fourier series expansion.
 
     This layer transforms input features into a high-dimensional Fourier space using
     sine and cosine functions and learns Fourier coefficients to approximate functions.
-
-    Attributes:
-        inputdim (int): Number of input features.
-        outdim (int): Number of output features.
-        gridsize (int): Number of Fourier basis functions used in the expansion.
-        addbias (bool): Whether to include a learnable bias term.
-        fouriercoeffs (torch.nn.Parameter): Learnable Fourier coefficients, initialized
-                                            using a normal distribution.
-        bias (torch.nn.Parameter, optional): Learnable bias term, initialized to zeros.
-
     Args:
         inputdim (int): Number of input features.
         outdim (int): Number of output features.
@@ -26,7 +16,7 @@ class NaiveFourierKANLayer(nn.Module):
         addbias (bool, optional): Whether to include a bias term. Default is True.
     """
     def __init__(self, inputdim, outdim, gridsize=300, addbias=True):
-        super(NaiveFourierKANLayer,self).__init__()
+        super(Fourier,self).__init__()
         self.gridsize= gridsize
         self.addbias = addbias
         self.inputdim = inputdim

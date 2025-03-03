@@ -3,30 +3,20 @@ import torch.nn as nn
 
 
 # This is inspired by Kolmogorov-Arnold Networks but using Chebyshev polynomials instead of splines coefficients
-class ChebyKANLayer(nn.Module):
+class Chebyshev(nn.Module):
     """
     A neural network layer that applies a Chebyshev polynomial transformation to the input.
 
     This layer approximates functions using a Chebyshev series expansion, where the input 
     is first normalized to the range [-1, 1] using the hyperbolic tangent function (`tanh`), 
     then transformed using Chebyshev polynomials of the first kind.
-
-    Attributes:
-        inputdim (int): The number of input features.
-        outdim (int): The number of output features.
-        degree (int): The degree of the Chebyshev polynomial expansion.
-        cheby_coeffs (torch.nn.Parameter): Learnable coefficients for the Chebyshev expansion, 
-                                           initialized with a normal distribution.
-        arange (torch.Tensor): A tensor containing values [0, 1, ..., degree] used for 
-                               polynomial expansion.
-
     Args:
         inputdim (int): The number of input features.
         outdim (int): The number of output features.
         degree (int, optional): The degree of the Chebyshev expansion. Default is 3.
     """
     def __init__(self, inputdim, outdim, degree = 3):
-        super(ChebyKANLayer, self).__init__()
+        super(Chebyshev, self).__init__()
         self.inputdim = inputdim
         self.outdim = outdim
         self.degree = degree

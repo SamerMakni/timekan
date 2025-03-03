@@ -5,10 +5,10 @@ Examples
 
 Below are examples demonstrating TimeKAN’s usage.
 
-Simple KAN-GRU Example
+Simple KAN-LSTM Example
 ----------------------
 
-This script shows how to use `TKANGRU` for time series prediction:
+This script shows how to use `tKANLSTM` for time series prediction:
 
 .. code-block:: python
 
@@ -22,16 +22,10 @@ This script shows how to use `TKANGRU` for time series prediction:
 
    device = auto_cuda()
 
-   class TKANLSTMRegressor(nn.Module):
-      """A regressor using tKANLSTM for time series prediction.
-
-      Args:
-         input_dim (int): Size of the input dimension.
-         hidden_dim (int): Size of the hidden state dimension.
-      """
+   class RecurrentKAN(nn.Module):
       def __init__(self, input_dim, hidden_dim):
          super().__init__()
-         self.tkan = tKANLSTM(
+         self.tkan = RecurrentKAN(
                input_dim=input_dim,
                hidden_dim=hidden_dim,
                return_sequences=False,
@@ -47,7 +41,7 @@ This script shows how to use `TKANGRU` for time series prediction:
 
    x_train, y_train, x_test, y_test = mackey_glass()
 
-   model = TKANLSTMRegressor(input_dim=1, hidden_dim=16).to(device)
+   model = RecurrentKAN(input_dim=1, hidden_dim=16).to(device)
    criterion = nn.MSELoss()
    optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 

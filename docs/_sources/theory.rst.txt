@@ -1,0 +1,30 @@
+.. docs/source/theory.rst
+
+Theory
+======
+
+KANs
+-----
+KANs are based on Kolmogorov-Arnold representation theorem, which asserts that any continuous multivariate function :math:`f(x_1, x_2, \dots, x_n)` can be expressed as a composition of univariate functions: :math:`f(x_1, x_2, \dots, x_n) = \sum_{q=1}^{2n+1} \Phi_q \left( \sum_{p=1}^n \phi_{q,p}(x_p) \right)`, where :math:`\Phi_q` and :math:`\phi_{q,p}` are continuous functions. In practice, KANs implement this by replacing traditional linear layers in neural networks with layers that approximate complex functions using adaptive basis functions.
+
+Basis Functions
+----------------
+
+We employ three types of basis functions to approximate the univariate functions :math:`\phi_{q,p}(x)`:
+
+- **Fourier Series**: Represent functions as sums of sines and cosines, :math:`\phi(x) = a_0 + \sum_{k=1}^\infty (a_k \cos(kx) + b_k \sin(kx))`. These are ideal for periodic or oscillatory data, efficiently capturing repeating patterns in time series.
+- **Splines**: Use piecewise polynomials, :math:`\phi(x) = \sum_{i} c_i B_i(x)`, where :math:`B_i(x)` are B-spline basis functions defined over a grid. Splines excel at fitting smooth, non-periodic data with local adaptability.
+- **Chebyshev Polynomials**: Approximate functions via :math:`\phi(x) = \sum_{k=0}^n c_k T_k(x)`, with :math:`T_k(x) = \cos(k \arccos(x))` as Chebyshev polynomials. They offer robust approximation for data with varying scales, leveraging orthogonality properties.
+
+These basis functions, configurable in TimeKAN, enable tailored modeling of diverse temporal dynamics.
+
+Architecture
+-------------
+
+Recurrent Neural Networks (RNNs) process sequential data by maintaining a hidden state :math:`h_t` that evolves over time. Standard LSTM and GRU architectures mitigate vanishing gradient issues in vanilla RNNs. For LSTM, the state update involves a cell state :math:`c_t` and gates: :math:`f_t = \sigma(W_f x_t + U_f h_{t-1} + b_f)`, :math:`i_t = \sigma(W_i x_t + U_i h_{t-1} + b_i)`, and :math:`o_t = \sigma(W_o x_t + U_o h_{t-1} + b_o)`, with :math:`c_t = f_t \odot c_{t-1} + i_t \odot \tanh(W_c x_t + U_c h_{t-1} + b_c)` and :math:`h_t = o_t \odot \tanh(c_t)`. GRU simplifies this with update and reset gates: :math:`z_t = \sigma(W_z x_t + U_z h_{t-1} + b_z)`, :math:`r_t = \sigma(W_r x_t + U_r h_{t-1} + b_r)`, and :math:`\tilde{h}_t = \tanh(W_h x_t + U_h (r_t \odot h_{t-1}) + b_h)`, yielding :math:`h_t = (1 - z_t) \odot h_{t-1} + z_t \odot \tilde{h}_t`.
+
+In TimeKAN, KAN layers enhance these recurrent cells by replacing key linear transformations with nonlinear approximations:
+
+- **tKANLSTM**: KAN layers substitute the output gate computation. The aggregated input :math:`\text{agg_input} = W_x x_t + W_h h_{t-1}` is processed by KAN layers, yielding :math:`o_t = \sigma(\text{KAN}(\text{agg_input}))`
+
+- **tKANGRU**: KAN layers compute the candidate hidden state, transforming :math:`\text{agg_input} = W_x x_t + W_h (r_t \odot h_{t-1})` into :math:`\tilde{h}_t = \tanh(\text{KAN}(\text{agg_input}))`

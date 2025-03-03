@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from ..layers import KANLinear, ChebyKANLayer, NaiveFourierKANLayer
+from ..layers import Spline, Chebyshev, Fourier
 
 
 
@@ -15,7 +15,7 @@ class TKANCell(nn.Module):
     Args:
         input_dim (int): Size of the input dimension.
         hidden_dim (int): Size of the hidden state dimension.
-        kan_type (str, optional): Type of KAN layer ('spline', 'chebychev', 'fourier'). Defaults to 'fourier'.
+        kan_type (str, optional): Type of KAN layer ('spline', 'chebyshev', 'fourier'). Defaults to 'fourier'.
         sub_kan_configs (dict, optional): Configuration for KAN sub-layers. Defaults to None.
         sub_kan_output_dim (int, optional): Output dimension of KAN sub-layers. Defaults to None.
         sub_kan_input_dim (int, optional): Input dimension of KAN sub-layers. Defaults to None.
@@ -74,11 +74,11 @@ class TKANCell(nn.Module):
             self.register_parameter('bias', None)
         
         if kan_type == 'spline':
-            model = KANLinear
-        elif kan_type == 'chebychev':
-            model = ChebyKANLayer
+            model = Spline
+        elif kan_type == 'chebyshev':
+            model = Chebyshev
         elif kan_type == 'fourier':
-            model = NaiveFourierKANLayer
+            model = Fourier
         
         self.tkan_sub_layers = nn.ModuleList()
         for _ in range(num_sub_layers):
@@ -199,7 +199,7 @@ class tKANLSTM(nn.Module):
         return_sequences (bool, optional): Whether to return the full sequence. Defaults to False.
         bidirectional (bool, optional): Whether to process bidirectionally. Defaults to False.
         layer_norm (bool, optional): Whether to apply layer normalization. Defaults to False.
-        kan_type (str, optional): Type of KAN layer ('spline', 'chebychev', 'fourier'). Defaults to 'fourier'.
+        kan_type (str, optional): Type of KAN layer ('spline', 'chebyshev', 'fourier'). Defaults to 'fourier'.
 
     Example:
         >>> import torch

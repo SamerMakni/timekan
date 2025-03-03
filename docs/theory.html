@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Introduction &#8212; timeKAN</title>
+    <title>Theory &#8212; timeKAN</title>
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=649a27d8" />
     <link rel="stylesheet" type="text/css" href="_static/insipid.css?v=75f6bc3c" />
@@ -18,7 +18,8 @@
     <script defer src="_static/insipid-sidebar.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Theory" href="theory.html" />
+    <link rel="next" title="Installation" href="installation.html" />
+    <link rel="prev" title="Introduction" href="index.html" />
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
   </head><body>
@@ -59,8 +60,8 @@
             </button>
           </div>
           <div class="title">
-            <span class="parent">timeKAN</span>
-            <a class="top" href="#">Introduction</a>
+            <a class="parent" href="index.html" accesskey="U">timeKAN</a>
+            <a class="top" href="#">Theory</a>
           </div>
           <div class="buttons">
             <button id="fullscreen-button" type="button" aria-hidden="true">
@@ -82,17 +83,31 @@
       </div>
     </header>
     <nav>
-      <a href="theory.html" class="nav-icon next" title="next:&#13;Theory" aria-label="Next topic" accesskey="N" tabindex="-1">
+      <a href="index.html" class="nav-icon previous" title="previous:&#13;Introduction" aria-label="Previous topic" accesskey="P" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"/></svg>
+      </a>
+      <a href="installation.html" class="nav-icon next" title="next:&#13;Installation" aria-label="Next topic" accesskey="N" tabindex="-1">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg>
       </a>
     </nav>
 
     <nav class="relbar">
-      <a class="next" href="theory.html" aria-label="Next topic" >
+      <a class="previous" href="index.html" aria-label="Previous topic" >
+        <div class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"/></svg>
+        </div>
+        <div class="title">
+          <span class="text">
+            <span class="direction">previous</span>
+            Introduction
+          </span>
+        </div>
+      </a>
+      <a class="next" href="installation.html" aria-label="Next topic" >
         <div class="title">
           <span class="text">
             <span class="direction">next</span>
-            Theory
+            Installation
           </span>
         </div>
         <div class="icon">
@@ -106,95 +121,30 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-<section id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">§</a></h1>
-<p><strong>TimeKAN</strong> is a Python library that implements Kolmogorov-Arnold Networks (KAN) with recurrent neural network architectures in Pytorch. Currently, it still in experimental stage but with careful training it can perform quite well on some time series tasks.</p>
-<a class="reference internal image-reference" href="_images/timeKAN.png"><img alt="_images/timeKAN.png" class="align-center" src="_images/timeKAN.png" style="width: 500px;" />
-</a>
-<p>In <cite>tKANLSTM</cite>, KAN layers replace the output gate, computing <span class="math notranslate nohighlight">\(o_t = \sigma(\text{KAN}(W_x x_t + W_h h_{t-1}))\)</span>. In <cite>tKANGRU</cite>, they form the candidate hidden state, <span class="math notranslate nohighlight">\(\tilde{h}_t = \tanh(\text{KAN}(W_x x_t + W_h (r_t \odot h_{t-1})))\)</span>. The layer basis functions can be Fourier series, Chebyshev polynomials, or splines.</p>
-<p>Here’s how it can perform on Rossler system signal:</p>
-<a class="reference internal image-reference" href="_images/rossler_system.png"><img alt="_images/rossler_system.png" class="align-center" src="_images/rossler_system.png" style="width: 800px;" />
-</a>
-<p>The table below compares TimeKAN (using <cite>tKANLSTM</cite> and <cite>spline</cite> as basic functions) and a standard bidirectional LSTM on three chaotic datasets available in <cite>timekan.utils.datasets</cite>. Metrics include Mean Absolute Error (MAE) and training time (seconds) until convergence.</p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Dataset</p></th>
-<th class="head"><p>Model</p></th>
-<th class="head"><p>MAE</p></th>
-<th class="head"><p>Training Time (s)</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td rowspan="2"><p>Mackey-Glass</p></td>
-<td><p>LSTM</p></td>
-<td><p>0.0893</p></td>
-<td><p>0.3346</p></td>
-</tr>
-<tr class="row-odd"><td><p>TimeKAN</p></td>
-<td><p>0.0822</p></td>
-<td><p>9.8755</p></td>
-</tr>
-<tr class="row-even"><td rowspan="2"><p>Lorenz</p></td>
-<td><p>LSTM</p></td>
-<td><p>0.9410</p></td>
-<td><p>1.1331</p></td>
-</tr>
-<tr class="row-odd"><td><p>TimeKAN</p></td>
-<td><p>0.7485</p></td>
-<td><p>7.9437</p></td>
-</tr>
-<tr class="row-even"><td rowspan="2"><p>Rössler</p></td>
-<td><p>LSTM</p></td>
-<td><p>0.3332</p></td>
-<td><p>1.3951</p></td>
-</tr>
-<tr class="row-odd"><td><p>TimeKAN</p></td>
-<td><p>0.2657</p></td>
-<td><p>12.4172</p></td>
-</tr>
-</tbody>
-</table>
-<section id="contents">
-<h2>Contents<a class="headerlink" href="#contents" title="Link to this heading">§</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="theory.html">Theory</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="theory.html#kans">KANs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="theory.html#basis-functions">Basis Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="theory.html#architecture">Architecture</a></li>
+<section id="theory">
+<h1>Theory<a class="headerlink" href="#theory" title="Link to this heading">§</a></h1>
+<section id="kans">
+<h2>KANs<a class="headerlink" href="#kans" title="Link to this heading">§</a></h2>
+<p>KANs are based on Kolmogorov-Arnold representation theorem, which asserts that any continuous multivariate function <span class="math notranslate nohighlight">\(f(x_1, x_2, \dots, x_n)\)</span> can be expressed as a composition of univariate functions: <span class="math notranslate nohighlight">\(f(x_1, x_2, \dots, x_n) = \sum_{q=1}^{2n+1} \Phi_q \left( \sum_{p=1}^n \phi_{q,p}(x_p) \right)\)</span>, where <span class="math notranslate nohighlight">\(\Phi_q\)</span> and <span class="math notranslate nohighlight">\(\phi_{q,p}\)</span> are continuous functions. In practice, KANs implement this by replacing traditional linear layers in neural networks with layers that approximate complex functions using adaptive basis functions.</p>
+</section>
+<section id="basis-functions">
+<h2>Basis Functions<a class="headerlink" href="#basis-functions" title="Link to this heading">§</a></h2>
+<p>We employ three types of basis functions to approximate the univariate functions <span class="math notranslate nohighlight">\(\phi_{q,p}(x)\)</span>:</p>
+<ul class="simple">
+<li><p><strong>Fourier Series</strong>: Represent functions as sums of sines and cosines, <span class="math notranslate nohighlight">\(\phi(x) = a_0 + \sum_{k=1}^\infty (a_k \cos(kx) + b_k \sin(kx))\)</span>. These are ideal for periodic or oscillatory data, efficiently capturing repeating patterns in time series.</p></li>
+<li><p><strong>Splines</strong>: Use piecewise polynomials, <span class="math notranslate nohighlight">\(\phi(x) = \sum_{i} c_i B_i(x)\)</span>, where <span class="math notranslate nohighlight">\(B_i(x)\)</span> are B-spline basis functions defined over a grid. Splines excel at fitting smooth, non-periodic data with local adaptability.</p></li>
+<li><p><strong>Chebyshev Polynomials</strong>: Approximate functions via <span class="math notranslate nohighlight">\(\phi(x) = \sum_{k=0}^n c_k T_k(x)\)</span>, with <span class="math notranslate nohighlight">\(T_k(x) = \cos(k \arccos(x))\)</span> as Chebyshev polynomials. They offer robust approximation for data with varying scales, leveraging orthogonality properties.</p></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#requirements">Requirements</a></li>
+<p>These basis functions, configurable in TimeKAN, enable tailored modeling of diverse temporal dynamics.</p>
+</section>
+<section id="architecture">
+<h2>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">§</a></h2>
+<p>Recurrent Neural Networks (RNNs) process sequential data by maintaining a hidden state <span class="math notranslate nohighlight">\(h_t\)</span> that evolves over time. Standard LSTM and GRU architectures mitigate vanishing gradient issues in vanilla RNNs. For LSTM, the state update involves a cell state <span class="math notranslate nohighlight">\(c_t\)</span> and gates: <span class="math notranslate nohighlight">\(f_t = \sigma(W_f x_t + U_f h_{t-1} + b_f)\)</span>, <span class="math notranslate nohighlight">\(i_t = \sigma(W_i x_t + U_i h_{t-1} + b_i)\)</span>, and <span class="math notranslate nohighlight">\(o_t = \sigma(W_o x_t + U_o h_{t-1} + b_o)\)</span>, with <span class="math notranslate nohighlight">\(c_t = f_t \odot c_{t-1} + i_t \odot \tanh(W_c x_t + U_c h_{t-1} + b_c)\)</span> and <span class="math notranslate nohighlight">\(h_t = o_t \odot \tanh(c_t)\)</span>. GRU simplifies this with update and reset gates: <span class="math notranslate nohighlight">\(z_t = \sigma(W_z x_t + U_z h_{t-1} + b_z)\)</span>, <span class="math notranslate nohighlight">\(r_t = \sigma(W_r x_t + U_r h_{t-1} + b_r)\)</span>, and <span class="math notranslate nohighlight">\(\tilde{h}_t = \tanh(W_h x_t + U_h (r_t \odot h_{t-1}) + b_h)\)</span>, yielding <span class="math notranslate nohighlight">\(h_t = (1 - z_t) \odot h_{t-1} + z_t \odot \tilde{h}_t\)</span>.</p>
+<p>In TimeKAN, KAN layers enhance these recurrent cells by replacing key linear transformations with nonlinear approximations:</p>
+<ul class="simple">
+<li><p><strong>tKANLSTM</strong>: KAN layers substitute the output gate computation. The aggregated input <span class="math notranslate nohighlight">\(\text{agg_input} = W_x x_t + W_h h_{t-1}\)</span> is processed by KAN layers, yielding <span class="math notranslate nohighlight">\(o_t = \sigma(\text{KAN}(\text{agg_input}))\)</span></p></li>
+<li><p><strong>tKANGRU</strong>: KAN layers compute the candidate hidden state, transforming <span class="math notranslate nohighlight">\(\text{agg_input} = W_x x_t + W_h (r_t \odot h_{t-1})\)</span> into <span class="math notranslate nohighlight">\(\tilde{h}_t = \tanh(\text{KAN}(\text{agg_input}))\)</span></p></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="package_reference.html">Package Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="package_reference.html#module-timekan.models">Models</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="package_reference.html#timekan.models.tKANGRU"><code class="docutils literal notranslate"><span class="pre">tKANGRU</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="package_reference.html#timekan.models.tKANLSTM"><code class="docutils literal notranslate"><span class="pre">tKANLSTM</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="package_reference.html#module-timekan.layers">Layers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="package_reference.html#timekan.layers.ChebyKANLayer"><code class="docutils literal notranslate"><span class="pre">ChebyKANLayer</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="package_reference.html#timekan.layers.KANLinear"><code class="docutils literal notranslate"><span class="pre">KANLinear</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="package_reference.html#timekan.layers.NaiveFourierKANLayer"><code class="docutils literal notranslate"><span class="pre">NaiveFourierKANLayer</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="package_reference.html#module-timekan.utils">Utilities</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="package_reference.html#timekan.utils.lorenz"><code class="docutils literal notranslate"><span class="pre">lorenz()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="package_reference.html#timekan.utils.mackey_glass"><code class="docutils literal notranslate"><span class="pre">mackey_glass()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="package_reference.html#timekan.utils.rossler"><code class="docutils literal notranslate"><span class="pre">rossler()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="examples.html#simple-kan-lstm-example">Simple KAN-LSTM Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples.html#more-examples">More Examples</a></li>
-</ul>
-</li>
-</ul>
-</div>
 </section>
 </section>
 
@@ -207,9 +157,14 @@
 
           <div class="sidebar-resize-handle"></div>
 
-<h3><a href="#">Table of Contents</a></h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="theory.html">Theory</a></li>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Theory</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#kans">KANs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#basis-functions">Basis Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#architecture">Architecture</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="package_reference.html">Package Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
@@ -227,11 +182,22 @@
     </div>
 
     <nav class="relbar">
-      <a class="next" href="theory.html" aria-label="Next topic" >
+      <a class="previous" href="index.html" aria-label="Previous topic" >
+        <div class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"/></svg>
+        </div>
+        <div class="title">
+          <span class="text">
+            <span class="direction">previous</span>
+            Introduction
+          </span>
+        </div>
+      </a>
+      <a class="next" href="installation.html" aria-label="Next topic" >
         <div class="title">
           <span class="text">
             <span class="direction">next</span>
-            Theory
+            Installation
           </span>
         </div>
         <div class="icon">
@@ -243,7 +209,7 @@
     <footer role="contentinfo">
       &#169; Copyright 2025, Samer Makni.
       Created using <a class="reference external" href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
-<a class="reference internal" href="_sources/index.rst.txt" rel="nofollow">Show Source</a>.
+<a class="reference internal" href="_sources/theory.rst.txt" rel="nofollow">Show Source</a>.
     </footer>
   </body>
 </html>

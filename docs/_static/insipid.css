@@ -1153,45 +1153,6 @@ div.viewcode-block:target {
 }
 
 /* -- media queries --------------------------------------------------------- */
-@media only screen and (max-width: 39rem) {
-    #sidebar-checkbox:checked ~ div.document,
-    #sidebar-checkbox:checked ~ .relbar,
-    #sidebar-checkbox:checked ~ .articleComments,
-    #sidebar-checkbox:checked ~ footer {
-        margin-left: 0;
-    }
-
-    #sidebar-checkbox:checked ~ #topbar-placeholder {
-        margin-left: 0;
-    }
-
-    #overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        visibility: hidden;
-        opacity: 0;
-        background-color: rgba(100%, 100%, 100%, 80%);
-        transition: opacity 0.3s ease-out, visibility 0s 0.3s ease-out;
-        z-index: 380;
-    }
-
-    #sidebar-checkbox:checked ~ #overlay {
-        visibility: visible;
-        opacity: 1;
-        transition: opacity 0.3s ease-out;
-    }
-
-    #sidebar-checkbox:checked ~ #topbar-placeholder #titlebar .parent {
-        display: unset;
-    }
-
-    #sidebar-checkbox:checked ~ #topbar-placeholder #titlebar #titlebar .top {
-        display: none;
-    }
-}
 
 body:not(.js) #fullscreen-button {
     display: none;

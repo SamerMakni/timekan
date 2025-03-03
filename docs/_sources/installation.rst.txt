@@ -13,15 +13,15 @@ For development or testing from source, clone the repository and install locally
 
 .. code-block:: bash
 
-   git clone https://github.com/yourusername/timekan.git
+   git clone https://github.com/SamerMakni/timekan.git
    cd timekan
    pip install -e .
 
 Requirements
 ------------
 
-- Python >= 3.7
-- PyTorch >= 1.9
+- Python >= 3.9
+- PyTorch >= 2.4.0
 - Additional dependencies listed in `setup.py`
 
 Ensure your environment meets these requirements before installation.
