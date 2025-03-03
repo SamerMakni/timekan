@@ -20,7 +20,7 @@ Full documentation can be found [here](https://samermakni.github.io/timekan/).
 
 ![image](./images/timeKAN.png)
 
-In `tKANLSTM`, KAN layers replace the output gate, computing $o_t = \sigma(\text{KAN}(W_x x_t + W_h h_{t-1}))$. In `tKANGRU`, they form the candidate hidden state, $\tilde{h}_t = \tanh(\text{KAN}(W_x x_t + W_h (r_t \odot h_{t-1})))$. The layer basis functions can be Fourier series, Chebyshev polynomials, or splines.
+In `tKANLSTM`, KAN layers replace the output gate, computing $o_t = \sigma(\text{KAN}(W_x x_t + W_h h_{t-1}))$. In `tKANGRU`, they form the candidate hidden state, $ \tilde{h}_t = \tanh(\text{KAN}(W_x x_t + W_h (r_t \odot h_{t-1}))) $. The layer basis functions can be Fourier series, Chebyshev polynomials, or splines.
 
 Here's how it can perform on Rossler system signal:
 
