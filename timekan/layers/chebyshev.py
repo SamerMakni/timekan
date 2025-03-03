@@ -1,8 +1,8 @@
 import torch
 import torch.nn as nn
 
+# this is inpired from https://github.com/SynodicMonth/ChebyKAN
 
-# This is inspired by Kolmogorov-Arnold Networks but using Chebyshev polynomials instead of splines coefficients
 class Chebyshev(nn.Module):
     """
     A neural network layer that applies a Chebyshev polynomial transformation to the input.
@@ -39,22 +39,15 @@ class Chebyshev(nn.Module):
             torch.Tensor: Output tensor of shape (batch_size, outdim), obtained via 
                           Chebyshev polynomial interpolation.
         """
-        # Since Chebyshev polynomial is defined in [-1, 1]
-        # We need to normalize x to [-1, 1] using tanh
         x = torch.tanh(x)
-        # View and repeat input degree + 1 times
         x = x.view((-1, self.inputdim, 1)).expand(
             -1, -1, self.degree + 1
-        )  # shape = (batch_size, inputdim, self.degree + 1)
-        # Apply acos
+        )  
         x = x.acos()
-        # Multiply by arange [0 .. degree]
         x *= self.arange
-        # Apply cos
         x = x.cos()
-        # Compute the Chebyshev interpolation
         y = torch.einsum(
             "bid,iod->bo", x, self.cheby_coeffs
-        )  # shape = (batch_size, outdim)
+        ) 
         y = y.view(-1, self.outdim)
         return y

@@ -2,7 +2,7 @@ import torch
 import torch.nn.functional as F
 import math
 
-
+# this is inpired from the original implementation of the kan layer from https://arxiv.org/abs/2404.19756
 class Spline(torch.nn.Module):
     def __init__(
         self,
@@ -72,7 +72,6 @@ class Spline(torch.nn.Module):
                 )
             )
             if self.enable_standalone_scale_spline:
-                # torch.nn.init.constant_(self.spline_scaler, self.scale_spline)
                 torch.nn.init.kaiming_uniform_(self.spline_scaler, a=math.sqrt(5) * self.scale_spline)
 
     def b_splines(self, x: torch.Tensor):
@@ -126,15 +125,15 @@ class Spline(torch.nn.Module):
 
         A = self.b_splines(x).transpose(
             0, 1
-        )  # (in_features, batch_size, grid_size + spline_order)
+        ) 
         B = y.transpose(0, 1)  # (in_features, batch_size, out_features)
          
         solution = torch.linalg.lstsq(
             A, B
-        ).solution  # (in_features, grid_size + spline_order, out_features)
+        ).solution  
         result = solution.permute(
             2, 0, 1
-        )  # (out_features, in_features, grid_size + spline_order)
+        ) 
 
         assert result.size() == (
             self.out_features,
@@ -171,16 +170,15 @@ class Spline(torch.nn.Module):
         assert x.dim() == 2 and x.size(1) == self.in_features
         batch = x.size(0)
 
-        splines = self.b_splines(x)  # (batch, in, coeff)
-        splines = splines.permute(1, 0, 2)  # (in, batch, coeff)
-        orig_coeff = self.scaled_spline_weight  # (out, in, coeff)
-        orig_coeff = orig_coeff.permute(1, 2, 0)  # (in, coeff, out)
-        unreduced_spline_output = torch.bmm(splines, orig_coeff)  # (in, batch, out)
+        splines = self.b_splines(x)  
+        splines = splines.permute(1, 0, 2) 
+        orig_coeff = self.scaled_spline_weight 
+        orig_coeff = orig_coeff.permute(1, 2, 0) 
+        unreduced_spline_output = torch.bmm(splines, orig_coeff)  
         unreduced_spline_output = unreduced_spline_output.permute(
             1, 0, 2
-        )  # (batch, in, out)
+        ) 
 
-        # sort each channel individually to collect data distribution
         x_sorted = torch.sort(x, dim=0)[0]
         grid_adaptive = x_sorted[
             torch.linspace(
