@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from ..layers import Spline, Chebyshev, Fourier
+from ..layers import Spline, Chebyshev, Fourier, ReLU
 
 
 
@@ -79,6 +79,10 @@ class TKANCell(nn.Module):
             model = Chebyshev
         elif kan_type == 'fourier':
             model = Fourier
+        elif kan_type == 'relu':
+            model = ReLU
+        else:
+            raise ValueError(f"Unknown KAN type: {kan_type}")
         
         self.tkan_sub_layers = nn.ModuleList()
         for _ in range(num_sub_layers):

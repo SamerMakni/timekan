@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=649a27d8" />
     <link rel="stylesheet" type="text/css" href="_static/insipid.css?v=75f6bc3c" />
 
-    <script src="_static/documentation_options.js?v=91f6191e"></script>
+    <script src="_static/documentation_options.js?v=b14783f5"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script defer src="_static/insipid.js"></script>
@@ -96,10 +96,8 @@
  <a href="#B"><strong>B</strong></a>
  | <a href="#C"><strong>C</strong></a>
  | <a href="#F"><strong>F</strong></a>
- | <a href="#K"><strong>K</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
- | <a href="#N"><strong>N</strong></a>
  | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
  | <a href="#T"><strong>T</strong></a>
@@ -109,7 +107,7 @@
 <h2 id="B">B</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="package_reference.html#timekan.layers.KANLinear.b_splines">b_splines() (timekan.layers.KANLinear method)</a>
+      <li><a href="package_reference.html#timekan.layers.Spline.b_splines">b_splines() (timekan.layers.Spline method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -117,11 +115,11 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="package_reference.html#timekan.layers.ChebyKANLayer">ChebyKANLayer (class in timekan.layers)</a>
+      <li><a href="package_reference.html#timekan.layers.Chebyshev">Chebyshev (class in timekan.layers)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="package_reference.html#timekan.layers.KANLinear.curve2coeff">curve2coeff() (timekan.layers.KANLinear method)</a>
+      <li><a href="package_reference.html#timekan.layers.Spline.curve2coeff">curve2coeff() (timekan.layers.Spline method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -129,12 +127,14 @@
 <h2 id="F">F</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="package_reference.html#timekan.layers.ChebyKANLayer.forward">forward() (timekan.layers.ChebyKANLayer method)</a>
+      <li><a href="package_reference.html#timekan.layers.Chebyshev.forward">forward() (timekan.layers.Chebyshev method)</a>
 
       <ul>
-        <li><a href="package_reference.html#timekan.layers.KANLinear.forward">(timekan.layers.KANLinear method)</a>
+        <li><a href="package_reference.html#timekan.layers.Fourier.forward">(timekan.layers.Fourier method)</a>
 </li>
-        <li><a href="package_reference.html#timekan.layers.NaiveFourierKANLayer.forward">(timekan.layers.NaiveFourierKANLayer method)</a>
+        <li><a href="package_reference.html#timekan.layers.ReLU.forward">(timekan.layers.ReLU method)</a>
+</li>
+        <li><a href="package_reference.html#timekan.layers.Spline.forward">(timekan.layers.Spline method)</a>
 </li>
         <li><a href="package_reference.html#timekan.models.tKANGRU.forward">(timekan.models.tKANGRU method)</a>
 </li>
@@ -142,12 +142,8 @@
 </li>
       </ul></li>
   </ul></td>
-</tr></table>
-
-<h2 id="K">K</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="package_reference.html#timekan.layers.KANLinear">KANLinear (class in timekan.layers)</a>
+      <li><a href="package_reference.html#timekan.layers.Fourier">Fourier (class in timekan.layers)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -179,22 +175,16 @@
   </ul></td>
 </tr></table>
 
-<h2 id="N">N</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="package_reference.html#timekan.layers.NaiveFourierKANLayer">NaiveFourierKANLayer (class in timekan.layers)</a>
-</li>
-  </ul></td>
-</tr></table>
-
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="package_reference.html#timekan.layers.KANLinear.regularization_loss">regularization_loss() (timekan.layers.KANLinear method)</a>
+      <li><a href="package_reference.html#timekan.layers.Spline.regularization_loss">regularization_loss() (timekan.layers.Spline method)</a>
+</li>
+      <li><a href="package_reference.html#timekan.layers.ReLU">ReLU (class in timekan.layers)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="package_reference.html#timekan.layers.KANLinear.reset_parameters">reset_parameters() (timekan.layers.KANLinear method)</a>
+      <li><a href="package_reference.html#timekan.layers.Spline.reset_parameters">reset_parameters() (timekan.layers.Spline method)</a>
 </li>
       <li><a href="package_reference.html#timekan.utils.rossler">rossler() (in module timekan.utils)</a>
 </li>
@@ -204,7 +194,11 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="package_reference.html#timekan.layers.KANLinear.scaled_spline_weight">scaled_spline_weight (timekan.layers.KANLinear property)</a>
+      <li><a href="package_reference.html#timekan.layers.Spline.scaled_spline_weight">scaled_spline_weight (timekan.layers.Spline property)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="package_reference.html#timekan.layers.Spline">Spline (class in timekan.layers)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -245,7 +239,7 @@
 <h2 id="U">U</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="package_reference.html#timekan.layers.KANLinear.update_grid">update_grid() (timekan.layers.KANLinear method)</a>
+      <li><a href="package_reference.html#timekan.layers.Spline.update_grid">update_grid() (timekan.layers.Spline method)</a>
 </li>
   </ul></td>
 </tr></table>

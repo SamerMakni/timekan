@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=649a27d8" />
     <link rel="stylesheet" type="text/css" href="_static/insipid.css?v=75f6bc3c" />
 
-    <script src="_static/documentation_options.js?v=91f6191e"></script>
+    <script src="_static/documentation_options.js?v=b14783f5"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script defer src="_static/insipid.js"></script>
@@ -147,7 +147,7 @@ and sequence output.</p>
 <li><p><strong>return_sequences</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to return the full sequence. Defaults to False.</p></li>
 <li><p><strong>bidirectional</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to process bidirectionally. Defaults to False.</p></li>
 <li><p><strong>layer_norm</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to apply layer normalization. Defaults to False.</p></li>
-<li><p><strong>kan_type</strong> (<em>str</em><em>, </em><em>optional</em>) – Type of KAN layer (‘spline’, ‘chebychev’, ‘fourier’). Defaults to ‘fourier’.</p></li>
+<li><p><strong>kan_type</strong> (<em>str</em><em>, </em><em>optional</em>) – Type of KAN layer (‘spline’, ‘chebyshev’, ‘fourier’). Defaults to ‘fourier’.</p></li>
 </ul>
 </dd>
 </dl>
@@ -203,7 +203,7 @@ and sequence output.</p>
 <li><p><strong>return_sequences</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to return the full sequence. Defaults to False.</p></li>
 <li><p><strong>bidirectional</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to process bidirectionally. Defaults to False.</p></li>
 <li><p><strong>layer_norm</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to apply layer normalization. Defaults to False.</p></li>
-<li><p><strong>kan_type</strong> (<em>str</em><em>, </em><em>optional</em>) – Type of KAN layer (‘spline’, ‘chebychev’, ‘fourier’). Defaults to ‘fourier’.</p></li>
+<li><p><strong>kan_type</strong> (<em>str</em><em>, </em><em>optional</em>) – Type of KAN layer (‘spline’, ‘chebyshev’, ‘fourier’). Defaults to ‘fourier’.</p></li>
 </ul>
 </dd>
 </dl>
@@ -241,8 +241,8 @@ and sequence output.</p>
 <section id="module-timekan.layers">
 <span id="layers"></span><h2>Layers<a class="headerlink" href="#module-timekan.layers" title="Link to this heading">§</a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="timekan.layers.ChebyKANLayer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">timekan.layers.</span></span><span class="sig-name descname"><span class="pre">ChebyKANLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputdim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outdim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/chebkan.html#ChebyKANLayer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.ChebyKANLayer" title="Link to this definition">§</a></dt>
+<dt class="sig sig-object py" id="timekan.layers.Chebyshev">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">timekan.layers.</span></span><span class="sig-name descname"><span class="pre">Chebyshev</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputdim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outdim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/chebyshev.html#Chebyshev"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.Chebyshev" title="Link to this definition">§</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>A neural network layer that applies a Chebyshev polynomial transformation to the input.</p>
 <p>This layer approximates functions using a Chebyshev series expansion, where the input
@@ -255,8 +255,8 @@ then transformed using Chebyshev polynomials of the first kind.
 :param degree: The degree of the Chebyshev expansion. Default is 3.
 :type degree: int, optional</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="timekan.layers.ChebyKANLayer.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/chebkan.html#ChebyKANLayer.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.ChebyKANLayer.forward" title="Link to this definition">§</a></dt>
+<dt class="sig sig-object py" id="timekan.layers.Chebyshev.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/chebyshev.html#Chebyshev.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.Chebyshev.forward" title="Link to this definition">§</a></dt>
 <dd><p>Forward pass of the Chebyshev Kernel Attention Network (KAN) layer.</p>
 <p>The input is first normalized to the range [-1, 1] using tanh.
 The layer then computes Chebyshev polynomials using the arccosine and cosine functions.</p>
@@ -280,93 +280,8 @@ The layer then computes Chebyshev polynomials using the arccosine and cosine fun
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="timekan.layers.KANLinear">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">timekan.layers.</span></span><span class="sig-name descname"><span class="pre">KANLinear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">in_features,</span> <span class="pre">out_features,</span> <span class="pre">grid_size=50,</span> <span class="pre">spline_order=5,</span> <span class="pre">scale_noise=0.1,</span> <span class="pre">scale_base=1.0,</span> <span class="pre">scale_spline=1.0,</span> <span class="pre">enable_standalone_scale_spline=True,</span> <span class="pre">base_activation=&lt;class</span> <span class="pre">'torch.nn.modules.activation.SiLU'&gt;,</span> <span class="pre">grid_eps=0.02,</span> <span class="pre">grid_range=[-1,</span> <span class="pre">1]</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/kan.html#KANLinear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.KANLinear" title="Link to this definition">§</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="timekan.layers.KANLinear.b_splines">
-<span class="sig-name descname"><span class="pre">b_splines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/kan.html#KANLinear.b_splines"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.KANLinear.b_splines" title="Link to this definition">§</a></dt>
-<dd><p>Compute the B-spline bases for the given input tensor.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>x</strong> (<em>torch.Tensor</em>) – Input tensor of shape (batch_size, in_features).</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>B-spline bases tensor of shape (batch_size, in_features, grid_size + spline_order).</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch.Tensor</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="timekan.layers.KANLinear.curve2coeff">
-<span class="sig-name descname"><span class="pre">curve2coeff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/kan.html#KANLinear.curve2coeff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.KANLinear.curve2coeff" title="Link to this definition">§</a></dt>
-<dd><p>Compute the coefficients of the curve that interpolates the given points.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> (<em>torch.Tensor</em>) – Input tensor of shape (batch_size, in_features).</p></li>
-<li><p><strong>y</strong> (<em>torch.Tensor</em>) – Output tensor of shape (batch_size, in_features, out_features).</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Coefficients tensor of shape (out_features, in_features, grid_size + spline_order).</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch.Tensor</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="timekan.layers.KANLinear.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/kan.html#KANLinear.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.KANLinear.forward" title="Link to this definition">§</a></dt>
-<dd><p>Define the computation performed at every call.</p>
-<p>Should be overridden by all subclasses.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Although the recipe for forward pass needs to be defined within
-this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
-instead of this since the former takes care of running the
-registered hooks while the latter silently ignores them.</p>
-</div>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="timekan.layers.KANLinear.regularization_loss">
-<span class="sig-name descname"><span class="pre">regularization_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">regularize_activation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regularize_entropy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/kan.html#KANLinear.regularization_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.KANLinear.regularization_loss" title="Link to this definition">§</a></dt>
-<dd><p>Compute the regularization loss.</p>
-<p>This is a dumb simulation of the original L1 regularization as stated in the
-paper, since the original one requires computing absolutes and entropy from the
-expanded (batch, in_features, out_features) intermediate tensor, which is hidden
-behind the F.linear function if we want an memory efficient implementation.</p>
-<p>The L1 regularization is now computed as mean absolute value of the spline
-weights. The authors implementation also includes this term in addition to the
-sample-based regularization.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="timekan.layers.KANLinear.reset_parameters">
-<span class="sig-name descname"><span class="pre">reset_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/kan.html#KANLinear.reset_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.KANLinear.reset_parameters" title="Link to this definition">§</a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="timekan.layers.KANLinear.scaled_spline_weight">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scaled_spline_weight</span></span><a class="headerlink" href="#timekan.layers.KANLinear.scaled_spline_weight" title="Link to this definition">§</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="timekan.layers.KANLinear.update_grid">
-<span class="sig-name descname"><span class="pre">update_grid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/kan.html#KANLinear.update_grid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.KANLinear.update_grid" title="Link to this definition">§</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="timekan.layers.NaiveFourierKANLayer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">timekan.layers.</span></span><span class="sig-name descname"><span class="pre">NaiveFourierKANLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputdim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outdim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gridsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">addbias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/fourierkan.html#NaiveFourierKANLayer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.NaiveFourierKANLayer" title="Link to this definition">§</a></dt>
+<dt class="sig sig-object py" id="timekan.layers.Fourier">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">timekan.layers.</span></span><span class="sig-name descname"><span class="pre">Fourier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputdim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outdim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gridsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">addbias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/fourier.html#Fourier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.Fourier" title="Link to this definition">§</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
 <p>A neural network layer that approximates functions using a Fourier series expansion.</p>
 <p>This layer transforms input features into a high-dimensional Fourier space using
@@ -380,8 +295,8 @@ sine and cosine functions and learns Fourier coefficients to approximate functio
 :param addbias: Whether to include a bias term. Default is True.
 :type addbias: bool, optional</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="timekan.layers.NaiveFourierKANLayer.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/fourierkan.html#NaiveFourierKANLayer.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.NaiveFourierKANLayer.forward" title="Link to this definition">§</a></dt>
+<dt class="sig sig-object py" id="timekan.layers.Fourier.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/fourier.html#Fourier.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.Fourier.forward" title="Link to this definition">§</a></dt>
 <dd><p>Forward pass of the Naive Fourier Kernel Attention Network (KAN) layer.</p>
 <p>The input is expanded using a Fourier series approximation by computing sine and
 cosine transformations, then applying learned Fourier coefficients to approximate
@@ -403,6 +318,111 @@ arbitrary batch dimensions.</p>
 </dd>
 </dl>
 </dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="timekan.layers.ReLU">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">timekan.layers.</span></span><span class="sig-name descname"><span class="pre">ReLU</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputdim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outdim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_ab</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">g</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/relu.html#ReLU"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.ReLU" title="Link to this definition">§</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="timekan.layers.ReLU.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/relu.html#ReLU.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.ReLU.forward" title="Link to this definition">§</a></dt>
+<dd><p>Define the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="timekan.layers.Spline">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">timekan.layers.</span></span><span class="sig-name descname"><span class="pre">Spline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">in_features,</span> <span class="pre">out_features,</span> <span class="pre">grid_size=50,</span> <span class="pre">spline_order=5,</span> <span class="pre">scale_noise=0.1,</span> <span class="pre">scale_base=1.0,</span> <span class="pre">scale_spline=1.0,</span> <span class="pre">enable_standalone_scale_spline=True,</span> <span class="pre">base_activation=&lt;class</span> <span class="pre">'torch.nn.modules.activation.SiLU'&gt;,</span> <span class="pre">grid_eps=0.02,</span> <span class="pre">grid_range=[-1,</span> <span class="pre">1]</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/spline.html#Spline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.Spline" title="Link to this definition">§</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="timekan.layers.Spline.b_splines">
+<span class="sig-name descname"><span class="pre">b_splines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/spline.html#Spline.b_splines"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.Spline.b_splines" title="Link to this definition">§</a></dt>
+<dd><p>Compute the B-spline bases for the given input tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>torch.Tensor</em>) – Input tensor of shape (batch_size, in_features).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>B-spline bases tensor of shape (batch_size, in_features, grid_size + spline_order).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="timekan.layers.Spline.curve2coeff">
+<span class="sig-name descname"><span class="pre">curve2coeff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/spline.html#Spline.curve2coeff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.Spline.curve2coeff" title="Link to this definition">§</a></dt>
+<dd><p>Compute the coefficients of the curve that interpolates the given points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>torch.Tensor</em>) – Input tensor of shape (batch_size, in_features).</p></li>
+<li><p><strong>y</strong> (<em>torch.Tensor</em>) – Output tensor of shape (batch_size, in_features, out_features).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Coefficients tensor of shape (out_features, in_features, grid_size + spline_order).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="timekan.layers.Spline.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/spline.html#Spline.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.Spline.forward" title="Link to this definition">§</a></dt>
+<dd><p>Define the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="timekan.layers.Spline.regularization_loss">
+<span class="sig-name descname"><span class="pre">regularization_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">regularize_activation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regularize_entropy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/spline.html#Spline.regularization_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.Spline.regularization_loss" title="Link to this definition">§</a></dt>
+<dd><p>Compute the regularization loss.</p>
+<p>This is a dumb simulation of the original L1 regularization as stated in the
+paper, since the original one requires computing absolutes and entropy from the
+expanded (batch, in_features, out_features) intermediate tensor, which is hidden
+behind the F.linear function if we want an memory efficient implementation.</p>
+<p>The L1 regularization is now computed as mean absolute value of the spline
+weights. The authors implementation also includes this term in addition to the
+sample-based regularization.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="timekan.layers.Spline.reset_parameters">
+<span class="sig-name descname"><span class="pre">reset_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/spline.html#Spline.reset_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.Spline.reset_parameters" title="Link to this definition">§</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="timekan.layers.Spline.scaled_spline_weight">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scaled_spline_weight</span></span><a class="headerlink" href="#timekan.layers.Spline.scaled_spline_weight" title="Link to this definition">§</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="timekan.layers.Spline.update_grid">
+<span class="sig-name descname"><span class="pre">update_grid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/timekan/layers/spline.html#Spline.update_grid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#timekan.layers.Spline.update_grid" title="Link to this definition">§</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -532,11 +552,27 @@ arbitrary batch dimensions.</p>
 
 <h3><a href="index.html">Table of Contents</a></h3>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="theory.html">Theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Package Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-timekan.models">Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-timekan.layers">Layers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-timekan.utils">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-timekan.models">Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#timekan.models.tKANGRU"><code class="docutils literal notranslate"><span class="pre">tKANGRU</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#timekan.models.tKANLSTM"><code class="docutils literal notranslate"><span class="pre">tKANLSTM</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-timekan.layers">Layers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#timekan.layers.Chebyshev"><code class="docutils literal notranslate"><span class="pre">Chebyshev</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#timekan.layers.Fourier"><code class="docutils literal notranslate"><span class="pre">Fourier</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#timekan.layers.ReLU"><code class="docutils literal notranslate"><span class="pre">ReLU</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#timekan.layers.Spline"><code class="docutils literal notranslate"><span class="pre">Spline</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-timekan.utils">Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#timekan.utils.lorenz"><code class="docutils literal notranslate"><span class="pre">lorenz()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#timekan.utils.mackey_glass"><code class="docutils literal notranslate"><span class="pre">mackey_glass()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#timekan.utils.rossler"><code class="docutils literal notranslate"><span class="pre">rossler()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>

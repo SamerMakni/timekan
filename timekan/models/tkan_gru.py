@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from ..layers import Spline, Chebyshev, Fourier
+from ..layers import Spline, Chebyshev, Fourier, ReLU
 
 class TKANGRUCell(nn.Module):
     """
@@ -59,6 +59,8 @@ class TKANGRUCell(nn.Module):
             model = Chebyshev
         elif kan_type == 'fourier':
             model = Fourier
+        elif kan_type == 'relu':
+            model = ReLU
         else:
             raise ValueError("Unsupported kan_type")
 

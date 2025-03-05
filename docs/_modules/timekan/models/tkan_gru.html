@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=649a27d8" />
     <link rel="stylesheet" type="text/css" href="../../../_static/insipid.css?v=75f6bc3c" />
 
-    <script src="../../../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../../../_static/documentation_options.js?v=b14783f5"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script defer src="../../../_static/insipid.js"></script>
@@ -33,7 +33,7 @@
                 document.documentElement.style.setProperty('--sidebar-width', sidebar_width);
             }
             // show sidebar on wide screen
-            if (!sidebar && window.matchMedia('(min-width: 100rem)').matches) {
+            if (!sidebar && window.matchMedia('(min-width: 0px)').matches) {
                 sidebar = 'visible';
                 // NB: We don't store the value in localStorage!
             }
@@ -94,7 +94,7 @@
 <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
 <span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
 
-<span class="kn">from</span> <span class="nn">..layers</span> <span class="kn">import</span> <span class="n">KANLinear</span><span class="p">,</span> <span class="n">ChebyKANLayer</span><span class="p">,</span> <span class="n">NaiveFourierKANLayer</span>
+<span class="kn">from</span> <span class="nn">..layers</span> <span class="kn">import</span> <span class="n">Spline</span><span class="p">,</span> <span class="n">Chebyshev</span><span class="p">,</span> <span class="n">Fourier</span><span class="p">,</span> <span class="n">ReLU</span>
 
 <span class="k">class</span> <span class="nc">TKANGRUCell</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -106,7 +106,7 @@
 <span class="sd">    Args:</span>
 <span class="sd">        input_dim (int): Size of the input dimension.</span>
 <span class="sd">        hidden_dim (int): Size of the hidden state dimension.</span>
-<span class="sd">        kan_type (str, optional): Type of KAN layer (&#39;spline&#39;, &#39;chebychev&#39;, &#39;fourier&#39;). Defaults to &#39;fourier&#39;.</span>
+<span class="sd">        kan_type (str, optional): Type of KAN layer (&#39;spline&#39;, &#39;chebyshev&#39;, &#39;fourier&#39;). Defaults to &#39;fourier&#39;.</span>
 <span class="sd">        sub_kan_configs (dict, optional): Configuration for KAN sub-layers. Defaults to None.</span>
 <span class="sd">        sub_kan_output_dim (int, optional): Output dimension of KAN sub-layers. Defaults to None (uses input_dim).</span>
 <span class="sd">        sub_kan_input_dim (int, optional): Input dimension of KAN sub-layers. Defaults to None (uses input_dim).</span>
@@ -146,11 +146,13 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">num_sub_layers</span> <span class="o">=</span> <span class="n">num_sub_layers</span>
 
         <span class="k">if</span> <span class="n">kan_type</span> <span class="o">==</span> <span class="s1">&#39;spline&#39;</span><span class="p">:</span>
-            <span class="n">model</span> <span class="o">=</span> <span class="n">KANLinear</span> 
-        <span class="k">elif</span> <span class="n">kan_type</span> <span class="o">==</span> <span class="s1">&#39;chebychev&#39;</span><span class="p">:</span>
-            <span class="n">model</span> <span class="o">=</span> <span class="n">ChebyKANLayer</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">Spline</span> 
+        <span class="k">elif</span> <span class="n">kan_type</span> <span class="o">==</span> <span class="s1">&#39;chebyshev&#39;</span><span class="p">:</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">Chebyshev</span>
         <span class="k">elif</span> <span class="n">kan_type</span> <span class="o">==</span> <span class="s1">&#39;fourier&#39;</span><span class="p">:</span>
-            <span class="n">model</span> <span class="o">=</span> <span class="n">NaiveFourierKANLayer</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">Fourier</span>
+        <span class="k">elif</span> <span class="n">kan_type</span> <span class="o">==</span> <span class="s1">&#39;relu&#39;</span><span class="p">:</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">ReLU</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unsupported kan_type&quot;</span><span class="p">)</span>
 
@@ -270,7 +272,7 @@
 <span class="sd">        return_sequences (bool, optional): Whether to return the full sequence. Defaults to False.</span>
 <span class="sd">        bidirectional (bool, optional): Whether to process bidirectionally. Defaults to False.</span>
 <span class="sd">        layer_norm (bool, optional): Whether to apply layer normalization. Defaults to False.</span>
-<span class="sd">        kan_type (str, optional): Type of KAN layer (&#39;spline&#39;, &#39;chebychev&#39;, &#39;fourier&#39;). Defaults to &#39;fourier&#39;.</span>
+<span class="sd">        kan_type (str, optional): Type of KAN layer (&#39;spline&#39;, &#39;chebyshev&#39;, &#39;fourier&#39;). Defaults to &#39;fourier&#39;.</span>
 
 <span class="sd">    Example:</span>
 <span class="sd">        &gt;&gt;&gt; import torch</span>
@@ -346,6 +348,7 @@
 
 <h3><a href="../../../index.html">Table of Contents</a></h3>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../theory.html">Theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../package_reference.html">Package Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Examples</a></li>

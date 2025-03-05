@@ -6,7 +6,7 @@ Examples
 Below are examples demonstrating TimeKAN’s usage.
 
 Simple KAN-LSTM Example
-----------------------
+-----------------------
 
 This script shows how to use `tKANLSTM` for time series prediction:
 
@@ -17,15 +17,15 @@ This script shows how to use `tKANLSTM` for time series prediction:
    from timekan.models.tkan_lstm import tKANLSTM
    from timekan.utils.datasets import mackey_glass
 
-   from cuda_selector import auto_cuda
+   from cuda_selector import auto_cuda # Optional, must install cuda-selector
 
 
-   device = auto_cuda()
+   device = auto_cuda() # Optional, cpu for no cuda or select cuda device
 
    class RecurrentKAN(nn.Module):
       def __init__(self, input_dim, hidden_dim):
          super().__init__()
-         self.tkan = RecurrentKAN(
+         self.tkan = tKANLSTM(
                input_dim=input_dim,
                hidden_dim=hidden_dim,
                return_sequences=False,
