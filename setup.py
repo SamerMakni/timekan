@@ -6,7 +6,7 @@ long_description = (this_directory / "README.md").read_text()
 
 setup(
     name='timekan',
-    version='0.1.2',
+    version='0.1.3',
     description='Python library designed to integrate Kolmogorov Arnold Networks with recurrent mechanisms.',
     long_description=long_description,
     long_description_content_type='text/markdown',

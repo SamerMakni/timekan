@@ -4,6 +4,19 @@ import torch.nn as nn
 
 
 class ReLU(nn.Module):
+    """
+    A ReLU-based Kolmogorov-Arnold Network (KAN) layer for nonlinear transformations.
+
+    This layer uses trainable ReLU activations and a convolutional operation to transform
+    input features into a higher-dimensional output, suitable for enhancing recurrent models.
+
+    Args:
+        inputdim (int): Number of input features.
+        outdim (int): Number of output features.
+        train_ab (bool, optional): If True, ReLU thresholds are trainable. Defaults to True.
+        g (int, optional): Grid size parameter controlling the number of basis points. Defaults to 5.
+        k (int, optional): Parameter controlling the range of ReLU thresholds. Defaults to 3.
+    """
     def __init__(self, inputdim: int, outdim: int, train_ab: bool = True, g=5, k=3):
         super().__init__()
         self.g, self.k, self.r = g, k, 4 * g * g / ((k + 1) * (k + 1))
@@ -17,7 +30,14 @@ class ReLU(nn.Module):
         self.equal_size_conv = nn.Conv2d(1, outdim, (g + k, inputdim))
 
     def forward(self, x):
-        # Ensure x is [batch_size, inputdim] or [batch_size, seq_len, inputdim]
+        """Transforms input through ReLU-based KAN operations and convolution.
+
+        Args:
+            x (torch.Tensor): Input tensor, either [batch_size, inputdim] or [batch_size, seq_len, inputdim].
+
+        Returns:
+            torch.Tensor: Output tensor, either [batch_size, outdim] or [batch_size, seq_len, outdim].
+        """
         if x.dim() == 3:  # [batch_size, seq_len, inputdim]
             batch_size, seq_len, _ = x.shape
             x = x.view(batch_size * seq_len, self.inputdim)  # Flatten to [batch_size * seq_len, inputdim]

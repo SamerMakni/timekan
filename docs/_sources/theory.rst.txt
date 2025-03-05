@@ -16,8 +16,6 @@ We employ three types of basis functions to approximate the univariate functions
 - **Splines**: Use piecewise polynomials, :math:`\phi(x) = \sum_{i} c_i B_i(x)`, where :math:`B_i(x)` are B-spline basis functions defined over a grid. Splines excel at fitting smooth, non-periodic data with local adaptability.
 - **Chebyshev Polynomials**: Approximate functions via :math:`\phi(x) = \sum_{k=0}^n c_k T_k(x)`, with :math:`T_k(x) = \cos(k \arccos(x))` as Chebyshev polynomials. They offer robust approximation for data with varying scales, leveraging orthogonality properties.
 
-These basis functions, configurable in TimeKAN, enable tailored modeling of diverse temporal dynamics.
-
 Architecture
 -------------
 

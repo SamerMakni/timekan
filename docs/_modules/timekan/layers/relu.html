@@ -98,6 +98,19 @@
 <div class="viewcode-block" id="ReLU">
 <a class="viewcode-back" href="../../../package_reference.html#timekan.layers.ReLU">[docs]</a>
 <span class="k">class</span> <span class="nc">ReLU</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A ReLU-based Kolmogorov-Arnold Network (KAN) layer for nonlinear transformations.</span>
+
+<span class="sd">    This layer uses trainable ReLU activations and a convolutional operation to transform</span>
+<span class="sd">    input features into a higher-dimensional output, suitable for enhancing recurrent models.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        inputdim (int): Number of input features.</span>
+<span class="sd">        outdim (int): Number of output features.</span>
+<span class="sd">        train_ab (bool, optional): If True, ReLU thresholds are trainable. Defaults to True.</span>
+<span class="sd">        g (int, optional): Grid size parameter controlling the number of basis points. Defaults to 5.</span>
+<span class="sd">        k (int, optional): Parameter controlling the range of ReLU thresholds. Defaults to 3.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputdim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">outdim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">train_ab</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">g</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">=</span> <span class="n">g</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">g</span> <span class="o">/</span> <span class="p">((</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
@@ -113,7 +126,14 @@
 <div class="viewcode-block" id="ReLU.forward">
 <a class="viewcode-back" href="../../../package_reference.html#timekan.layers.ReLU.forward">[docs]</a>
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="c1"># Ensure x is [batch_size, inputdim] or [batch_size, seq_len, inputdim]</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Transforms input through ReLU-based KAN operations and convolution.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            x (torch.Tensor): Input tensor, either [batch_size, inputdim] or [batch_size, seq_len, inputdim].</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            torch.Tensor: Output tensor, either [batch_size, outdim] or [batch_size, seq_len, outdim].</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>  <span class="c1"># [batch_size, seq_len, inputdim]</span>
             <span class="n">batch_size</span><span class="p">,</span> <span class="n">seq_len</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span>
             <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch_size</span> <span class="o">*</span> <span class="n">seq_len</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputdim</span><span class="p">)</span>  <span class="c1"># Flatten to [batch_size * seq_len, inputdim]</span>
