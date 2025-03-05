@@ -72,7 +72,7 @@ from timekan.utils.datasets import mackey_glass
 class RecurrentKAN(nn.Module):
     def __init__(self, input_dim, hidden_dim):
         super().__init__()
-        self.tkan = RecurrentKAN(
+        self.tkan = tKANLSTM(
             input_dim=input_dim,
             hidden_dim=hidden_dim,
             return_sequences=False,
