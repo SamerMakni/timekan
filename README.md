@@ -22,9 +22,18 @@ Full documentation can be found [here](https://samermakni.github.io/timekan/).
 
 In `tKANLSTM`, KAN layers replace the output gate, computing $o_t = \sigma(\text{KAN}(W_x x_t + W_h h_{t-1}))$. In `tKANGRU`, they form the candidate hidden state, $\tilde{h}_t = \tanh(\text{KAN}(W_x x_t + W_h (r_t \odot h_{t-1}))$. The layer basis functions can be Fourier series, Chebyshev polynomials, or splines.
 
+Animation of tKANLSTM learning a Mackay Glass signal:
+
+
+https://github.com/user-attachments/assets/d513c3a2-8857-4263-a07e-f2e4eeb66ed9
+
+
+
+
 Here's how it can perform on Rossler system signal:
 
 ![image](./images/rossler_system.png)
+
 
 The table below compares TimeKAN (using `tKANLSTM` and
 `spline` as basic functions) and a standard bidirectional
